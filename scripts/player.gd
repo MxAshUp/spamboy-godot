@@ -19,7 +19,6 @@ var velocity = Vector2()
 var origin_y
 var snapping_to_y
 
-
 func _ready():
 	origin_y = position.y
 	snapping_to_y = origin_y
@@ -28,7 +27,10 @@ func _ready():
 func _process(delta):
 	# @todo - it's more complicated than this
 	if Input.is_action_just_pressed("mount_bike"):
-		is_biking = !is_biking
+		if is_biking:
+			is_biking = false
+		elif true: #todo - if touch bike node
+			is_biking = true
 		
 	if is_biking:
 		$player_state_animation.play("biking_idle")
