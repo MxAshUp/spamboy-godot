@@ -30,11 +30,16 @@ func process_animation_state():
 	var move_direction = 0
 	
 	if is_biking:
+		
+		animation_to_play = "idle_bike_lr"
+		
+		if crashing:
+			animation_to_play = "crashing"
+			
 		# Handle left/right sprite mirror
 		if sign(velocity.x) != 0:
 			last_move_dir = sign(velocity.x)
 		
-		animation_to_play = "idle_bike_lr"
 	else:
 		var left_right_move = false
 		
@@ -141,7 +146,6 @@ func process_bike_physics(delta):
 	if abs((new_velocity - velocity).x) > crash_speed:
 		crashing = true
 		velocity = Vector2()
-		$player_state_animation.play("crashing")
 		
 	velocity = new_velocity
 
@@ -199,9 +203,11 @@ func mount_bike():
 func dismount_bike():
 	is_biking = false
 	if ridable_bike:
+		ridable_bike.flip_h = $charSprite.flip_h
 		ridable_bike.position = position
 		ridable_bike.show()
-		move_and_collide(Vector2(0, -8))
+		move_and_collide(Vector2(0, -4))
+	$player_state_animation.play("idle_lr")
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	if area.get_name() == "bike":
@@ -215,5 +221,6 @@ func _on_Area2D_area_shape_exited(area_id, area, area_shape, self_shape):
 
 func _on_player_state_animation_animation_finished(anim_name):
 	if anim_name == "crashing":
+		crashing = false
 		dismount_bike()
 		

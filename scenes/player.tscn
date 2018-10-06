@@ -20,60 +20,12 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("collision_bike:disabled")
+tracks/0/path = NodePath("charSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("collision_char:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("collision_bike:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("collision_char:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("charSprite:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -192,7 +144,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -213,10 +165,9 @@ crashing = false
 [node name="charSprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -4 )
-rotation = -6.28319
 texture = ExtResource( 2 )
 hframes = 22
-frame = 3
+frame = 4
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
@@ -250,8 +201,10 @@ _sections_unfolded = [ "Editor", "Limit", "Smoothing" ]
 
 [node name="collision_bike" type="CollisionShape2D" parent="." index="2"]
 
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
+disabled = true
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="collision_char" type="CollisionShape2D" parent="." index="3"]
