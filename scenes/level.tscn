@@ -80,14 +80,14 @@ sort_enabled = true
 
 [node name="player" parent="YSort" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -64, 0 )
+position = Vector2( -64, 5 )
 acceleration = 300
 friction = 300
 vertical_snap_speed = 310
 
 [node name="bike" parent="YSort" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 32, 0 )
+position = Vector2( 32, 5 )
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
