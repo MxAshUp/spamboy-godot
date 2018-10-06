@@ -12,6 +12,10 @@ position = Vector2( -64, 0 )
 acceleration = 300
 friction = 300
 vertical_snap_speed = 310
+walkling_acceleration = 400
+walking_max_speed = 75
+walking_friction = 600
+walking_vertical_snap_speed = 200
 
 [node name="background" parent="." index="1" instance=ExtResource( 2 )]
 
