@@ -1,38 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=4]
-[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=5]
+[ext_resource path="res://scenes/background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=2]
+[ext_resource path="res://scenes/mailbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=6]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
-[node name="YSort" type="YSort" parent="." index="0"]
+[node name="background" parent="." index="0" instance=ExtResource( 1 )]
 
-sort_enabled = true
+[node name="mapStuff" type="Node2D" parent="." index="1"]
 
-[node name="player" parent="YSort" index="0" instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
-position = Vector2( -64, 0 )
-acceleration = 300
-friction = 300
-vertical_snap_speed = 310
-
-[node name="bike" parent="YSort" index="1" instance=ExtResource( 2 )]
-
-position = Vector2( 32, 0 )
-
-[node name="background" parent="." index="1" instance=ExtResource( 3 )]
-
-scroll_ignore_camera_zoom = false
-
-[node name="TileMap" type="TileMap" parent="." index="2"]
+[node name="basicTileMap" type="TileMap" parent="mapStuff" index="0"]
 
 position = Vector2( 0, -6 )
 z_index = -1
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -47,12 +37,73 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 65547, 10, 0, 131082, 1, 0, 131083, 3, 0, 131084, 3, 0, 131085, 2, 0, 196637, 3, 0, 196638, 3, 0, 196639, 3, 0, 196640, 3, 0, 262162, 3, 0, 262163, 3, 0, 262164, 3, 0, 262165, 3, 0, 262166, 3, 0, 262167, 3, 0, 262168, 3, 0, 262169, 3, 0, 262170, 3, 0, 262171, 3, 0, 262172, 3, 0, 262173, 3, 0, 262174, 3, 0, 262175, 3, 0, 262176, 3, 0, 327698, 3, 0, 327699, 3, 0, 327700, 3, 0, 327701, 3, 0, 327702, 3, 0, 327703, 3, 0, 327704, 3, 0, 327705, 3, 0, 327706, 3, 0, 327707, 3, 0, 327708, 3, 0, 327709, 3, 0, 327710, 3, 0, 327711, 3, 0, 327712, 3, 0 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+tile_data = PoolIntArray( -327678, 58, 0, -196616, 15, 0, -131081, 7, 0, -131078, 7, 0, -131077, 7, 0, -196583, 5, 0, -196582, 5, 0, -196581, 5, 0, -196580, 5, 0, -196579, 5, 0, -196578, 5, 0, -196577, 5, 0, -196576, 5, 0, -65551, 11, 0, -65550, 13, 0, -65549, 11, 0, -65548, 11, 0, -65547, 11, 0, -65546, 13, 0, -65545, 7, 0, -65544, 7, 0, -65543, 7, 0, -65542, 7, 0, -65541, 7, 0, -65540, 7, 0, -131066, 6, 0, -131065, 6, 0, -131064, 6, 0, -131063, 6, 0, -131062, 6, 0, -131052, 5, 0, -131051, 5, 0, -131050, 5, 0, -131049, 5, 0, -131048, 5, 0, -131047, 5, 0, -131046, 5, 0, -131045, 5, 0, -131044, 5, 0, -131043, 5, 0, -131042, 5, 0, -131041, 5, 0, -131040, 5, 0, -15, 12, 0, -14, 12, 0, -13, 12, 0, -12, 14, 0, -11, 12, 0, -10, 12, 0, -9, 7, 0, -8, 16, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 0, -65516, 5, 0, -65515, 12, 0, -65514, 12, 0, -65513, 12, 0, -65512, 5, 0, -65511, 5, 0, -65510, 5, 0, -65509, 5, 0, -65508, 5, 0, -65507, 5, 0, -65506, 5, 0, -65505, 5, 0, -65504, 5, 0, 65521, 12, 0, 65522, 12, 0, 65523, 12, 0, 65524, 12, 0, 65525, 12, 0, 65526, 12, 0, 65527, 7, 0, 65528, 7, 0, 65529, 7, 0, 65530, 7, 0, 65531, 7, 0, 65532, 7, 0, 6, 6, 0, 7, 6, 0, 8, 6, 0, 9, 6, 0, 10, 6, 0, 20, 5, 0, 21, 12, 0, 22, 12, 0, 23, 12, 0, 24, 5, 0, 25, 5, 0, 26, 5, 0, 27, 5, 0, 28, 5, 0, 29, 5, 0, 30, 5, 0, 31, 5, 0, 32, 5, 0, 131062, 51, 0, 131064, 55, 0, 131065, 52, 0, 131066, 53, 0, 131067, 54, 0, 131071, 61, 0, 65539, 51, 0, 65546, 55, 0, 65547, 50, 0, 65550, 51, 0, 65553, 61, 0, 65557, 56, 0, 65558, 39, 0, 65559, 57, 0, 65562, 55, 0, 65567, 51, 0, 65576, 55, 0, 65582, 51, 0, 131093, 1, 0, 131094, 39, 0, 131095, 2, 0 )
+_sections_unfolded = [ "Cell", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="overlaysTileMap" type="TileMap" parent="mapStuff" index="1"]
+
+position = Vector2( 0, -6 )
+z_index = -1
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -196617, 18, 0, -196616, 18, 0, -196615, 18, 0, -196614, 18, 0, -196613, 18, 0, -196612, 18, 0, -262119, 32, 0, -262118, 32, 0, -262117, 32, 0, -262116, 32, 0, -262115, 32, 0, -262114, 32, 0, -262113, 32, 0, -262112, 32, 0, -131081, 19, 0, -131080, 19, 0, -131079, 19, 0, -131078, 22, 0, -131077, 23, 0, -131076, 19, 0, -196602, 26, 0, -196601, 26, 0, -196600, 26, 0, -196599, 26, 0, -196598, 26, 0, -196583, 33, 0, -196582, 33, 0, -196581, 33, 0, -196580, 33, 0, -196579, 33, 0, -196578, 33, 0, -196577, 33, 0, -196576, 33, 0, -65545, 20, 0, -65544, 20, 0, -65543, 21, 0, -65540, 24, 0, -65539, 60, 0, -131070, 11, 0, -131069, 11, 0, -131068, 11, 0, -131067, 11, 0, -131066, 27, 0, -131065, 27, 0, -131064, 27, 0, -131063, 27, 0, -131062, 27, 0, -131055, 60, 0, -131052, 47, 0, -131051, 47, 0, -131050, 47, 0, -131049, 47, 0, -131048, 47, 0, -131047, 34, 0, -131046, 34, 0, -131045, 34, 0, -131044, 34, 0, -131043, 34, 0, -131042, 34, 0, -131041, 34, 0, -131040, 34, 0, -6, 9, 0, -65534, 12, 0, -65533, 12, 0, -65532, 12, 0, -65531, 12, 0, -65529, 9, 0, -65527, 17, 0, -65525, 59, 0, -65516, 47, 0, -65515, 47, 0, -65514, 47, 0, -65513, 47, 0, -65512, 47, 0, -65510, 16, 0, -65508, 9, 0, -65506, 16, 0, 65522, 59, 0, 65530, 10, 0, 2, 12, 0, 3, 12, 0, 4, 12, 0, 5, 12, 0, 7, 10, 0, 20, 47, 0, 21, 47, 0, 22, 47, 0, 23, 47, 0, 24, 47, 0, 28, 10, 0, 33, 59, 0, 65542, 52, 0, 65543, 53, 0, 65544, 54, 0, 65558, 41, 0, 65563, 52, 0, 65564, 53, 0, 65565, 54, 0, 196598, 4, 0, 196605, 3, 0, 196606, 4, 0, 131072, 3, 0, 196623, 40, 0, 327661, 40, 0, 327678, 40, 0, 262197, 41, 0, 393206, 41, 0, 327699, 41, 0, 327712, 40, 0 )
+_sections_unfolded = [ "Cell", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="mailbox" parent="mapStuff" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( -57, 10 )
+
+[node name="YSort" type="YSort" parent="." index="2"]
+
+position = Vector2( 0, 27 )
+sort_enabled = true
+
+[node name="player" parent="YSort" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( -64, 0 )
+acceleration = 300
+friction = 300
+vertical_snap_speed = 310
+
+[node name="bike" parent="YSort" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 32, 0 )
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
-visible = false
-texture = ExtResource( 5 )
+modulate = Color( 1, 1, 1, 0.187843 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hud" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 

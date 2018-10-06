@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/level/trees.png" type="Texture" id=3]
 [ext_resource path="res://assets/level/backyard.png" type="Texture" id=4]
 
-[node name="background" type="ParallaxBackground" index="0"]
+[node name="background" type="ParallaxBackground"]
 
 layer = -1
 offset = Vector2( 0, 0 )

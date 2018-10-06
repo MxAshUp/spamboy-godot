@@ -2,10 +2,10 @@
 
 [ext_resource path="res://assets/level/tilemap.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
+extents = Vector2( 5, 7 )
 
 [node name="TileMap" type="Node2D"]
 
@@ -35,7 +35,295 @@ region_enabled = true
 region_rect = Rect2( 32, 0, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road" type="Sprite" parent="." index="3"]
+[node name="decal_spam1" type="Sprite" parent="." index="3"]
+
+position = Vector2( 64, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="decal_spam2" type="Sprite" parent="." index="4"]
+
+position = Vector2( 80, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="house_1" type="Sprite" parent="." index="5"]
+
+position = Vector2( 96, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="house_3" type="Sprite" parent="." index="6"]
+
+position = Vector2( 96, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="house_4" type="Sprite" parent="." index="7"]
+
+position = Vector2( 96, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="house_2" type="Sprite" parent="." index="8"]
+
+position = Vector2( 112, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="door_1" type="Sprite" parent="." index="9"]
+
+position = Vector2( 112, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="door_2" type="Sprite" parent="." index="10"]
+
+position = Vector2( 112, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="fence_1" type="Sprite" parent="." index="11"]
+
+position = Vector2( 64, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="fence_2" type="Sprite" parent="." index="12"]
+
+position = Vector2( 64, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="fence_3" type="Sprite" parent="." index="13"]
+
+position = Vector2( 80, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="fence_4" type="Sprite" parent="." index="14"]
+
+position = Vector2( 80, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="chimney" type="Sprite" parent="." index="15"]
+
+position = Vector2( 128, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="window_1" type="Sprite" parent="." index="16"]
+
+position = Vector2( 128, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="window_2" type="Sprite" parent="." index="17"]
+
+position = Vector2( 128, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_top" type="Sprite" parent="." index="18"]
+
+position = Vector2( 144, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_tile" type="Sprite" parent="." index="19"]
+
+position = Vector2( 160, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_bottom" type="Sprite" parent="." index="20"]
+
+position = Vector2( 176, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_bottom_l" type="Sprite" parent="." index="21"]
+
+position = Vector2( 192, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 176, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_mid_l" type="Sprite" parent="." index="22"]
+
+position = Vector2( 208, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_mid_r" type="Sprite" parent="." index="23"]
+
+position = Vector2( 224, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 208, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_red_bottom_r" type="Sprite" parent="." index="24"]
+
+position = Vector2( 240, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_top" type="Sprite" parent="." index="25"]
+
+position = Vector2( 144, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_tile" type="Sprite" parent="." index="26"]
+
+position = Vector2( 160, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_bottom" type="Sprite" parent="." index="27"]
+
+position = Vector2( 176, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_bottom_l" type="Sprite" parent="." index="28"]
+
+position = Vector2( 192, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 176, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_mid_l" type="Sprite" parent="." index="29"]
+
+position = Vector2( 208, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_mid_r" type="Sprite" parent="." index="30"]
+
+position = Vector2( 224, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 208, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_blue_bottom_r" type="Sprite" parent="." index="31"]
+
+position = Vector2( 240, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_top" type="Sprite" parent="." index="32"]
+
+position = Vector2( 144, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_tile" type="Sprite" parent="." index="33"]
+
+position = Vector2( 160, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_bottom" type="Sprite" parent="." index="34"]
+
+position = Vector2( 176, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 32, 16, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="roof_brown_bottom_l" type="Sprite" parent="." index="35"]
+
+position = Vector2( 192, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 176, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_mid_l" type="Sprite" parent="." index="36"]
+
+position = Vector2( 208, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_mid_r" type="Sprite" parent="." index="37"]
+
+position = Vector2( 224, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 208, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="roof_brown_bottom_r" type="Sprite" parent="." index="38"]
+
+position = Vector2( 240, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 224, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="road" type="Sprite" parent="." index="39"]
 
 position = Vector2( 16, 32 )
 texture = ExtResource( 1 )
@@ -43,7 +331,7 @@ region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_pothole_1" type="Sprite" parent="." index="4"]
+[node name="road_pothole_1" type="Sprite" parent="." index="40"]
 
 position = Vector2( 32, 32 )
 texture = ExtResource( 1 )
@@ -51,7 +339,7 @@ region_enabled = true
 region_rect = Rect2( 16, 16, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_pothole_2" type="Sprite" parent="." index="5"]
+[node name="road_pothole_2" type="Sprite" parent="." index="41"]
 
 position = Vector2( 48, 32 )
 texture = ExtResource( 1 )
@@ -59,7 +347,7 @@ region_enabled = true
 region_rect = Rect2( 32, 16, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_line_t_l" type="Sprite" parent="." index="6"]
+[node name="road_line_t_l" type="Sprite" parent="." index="42"]
 
 position = Vector2( 16, 48 )
 texture = ExtResource( 1 )
@@ -67,7 +355,7 @@ region_enabled = true
 region_rect = Rect2( 0, 32, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_line_t_r" type="Sprite" parent="." index="7"]
+[node name="road_line_t_r" type="Sprite" parent="." index="43"]
 
 position = Vector2( 32, 48 )
 texture = ExtResource( 1 )
@@ -75,7 +363,7 @@ region_enabled = true
 region_rect = Rect2( 16, 32, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_line_b_l" type="Sprite" parent="." index="8"]
+[node name="road_line_b_l" type="Sprite" parent="." index="44"]
 
 position = Vector2( 16, 64 )
 texture = ExtResource( 1 )
@@ -83,7 +371,7 @@ region_enabled = true
 region_rect = Rect2( 0, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="road_line_b_r" type="Sprite" parent="." index="9"]
+[node name="road_line_b_r" type="Sprite" parent="." index="45"]
 
 position = Vector2( 32, 64 )
 texture = ExtResource( 1 )
@@ -91,166 +379,135 @@ region_enabled = true
 region_rect = Rect2( 16, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="grass_1" type="Sprite" parent="." index="10"]
+[node name="decal_shadow1" type="Sprite" parent="." index="46"]
 
-editor/display_folded = true
+position = Vector2( 48, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="decal_shadow2" type="Sprite" parent="." index="47"]
+
+position = Vector2( 48, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="grass_1" type="Sprite" parent="." index="48"]
+
 position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="grass_1" index="0"]
+[node name="grass_2" type="Sprite" parent="." index="49"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_1/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="grass_2" type="Sprite" parent="." index="11"]
-
-editor/display_folded = true
 position = Vector2( 80, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="grass_2" index="0"]
+[node name="grass_3" type="Sprite" parent="." index="50"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_2/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="grass_3" type="Sprite" parent="." index="12"]
-
-editor/display_folded = true
 position = Vector2( 96, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="grass_3" index="0"]
+[node name="grass_4" type="Sprite" parent="." index="51"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_3/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="grass_4" type="Sprite" parent="." index="13"]
-
-editor/display_folded = true
 position = Vector2( 112, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 96, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="grass_4" index="0"]
+[node name="sidewal_up_l" type="Sprite" parent="." index="52"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_4/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="sidewal_up_l" type="Sprite" parent="." index="14"]
-
-editor/display_folded = true
 position = Vector2( 128, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 112, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="sidewal_up_l" index="0"]
+[node name="sidewalk_up" type="Sprite" parent="." index="53"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewal_up_l/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="sidewalk_up" type="Sprite" parent="." index="15"]
-
-editor/display_folded = true
 position = Vector2( 144, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 128, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="sidewalk_up" index="0"]
+[node name="sidewalk_up_r" type="Sprite" parent="." index="54"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewalk_up/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="sidewalk_up_r" type="Sprite" parent="." index="16"]
-
-editor/display_folded = true
 position = Vector2( 160, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 144, 48, 16, 16 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="sidewalk_up_r" index="0"]
+[node name="grass_5" type="Sprite" parent="." index="55"]
+
+position = Vector2( 176, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="grass_xing_l" type="Sprite" parent="." index="56"]
+
+position = Vector2( 192, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 176, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="grass_xing_r" type="Sprite" parent="." index="57"]
+
+position = Vector2( 208, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="tree" type="Sprite" parent="." index="58"]
+
+position = Vector2( 32, 120 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 48, 96 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="bush" type="Sprite" parent="." index="59"]
+
+position = Vector2( 81, 88 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 64, 48, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="spruce" type="Sprite" parent="." index="60"]
+
+position = Vector2( 81, 137 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 96, 48, 64 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="recyclebin" type="Sprite" parent="." index="61"]
+
+position = Vector2( 108, 88 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 16, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="recyclebin" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -259,11 +516,9 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewalk_up_r/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="recyclebin/StaticBody2D" index="0"]
 
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+shape = SubResource( 3 )
 
 
