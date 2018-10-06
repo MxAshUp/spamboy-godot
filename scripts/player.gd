@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export (int) var acceleration = 1000
+export (int) var acceleration = 100
 export (int) var max_speed = 200
-export (int) var friction = 1000
+export (int) var friction = 100
 
 export (int) var vertical_snap = 16
 export (int) var vertical_snap_speed = 10
@@ -32,10 +32,10 @@ func _physics_process(delta):
 		change_y_velocity += 1
 
   # update horizontal veloxity
-	velocity.x += change_x_velocity * delta
+	velocity.x += change_x_velocity
 
 	# apply horizontal friction
-	velocity.x -= min(abs(velocity.x), friction * delta) * sign(velocity.x)
+	velocity.x -= min(abs(velocity.x), friction) * sign(velocity.x)
 
 	# don't allow x velocity to exceed max speed 
 	if abs(velocity.x) > max_speed:
@@ -43,13 +43,15 @@ func _physics_process(delta):
 
 	# decide which y position to snap to
 	if abs(change_y_velocity) > 0:
-		snapping_to_y = floor((position.y + change_y_velocity - origin_y) / vertical_snap) * vertical_snap + origin_y
+		snapping_to_y = floor((position.y + change_y_velocity * vertical_snap / 4 - origin_y) / vertical_snap) * vertical_snap + origin_y
 		if change_y_velocity > 0:
 			snapping_to_y += vertical_snap
 	
+	abs(velocity.x) / max_speed
+
 	# set vertical velocity based on which position to snap to
 	if abs(snapping_to_y - position.y) > 0:
-		velocity.y = (snapping_to_y - position.y) * vertical_snap_speed
+		velocity.y = (snapping_to_y - position.y) * vertical_snap_speed * min(max(0.02, abs(velocity.x) / max_speed), 0.5) * 2
 
 	# move player
 	position += velocity * delta

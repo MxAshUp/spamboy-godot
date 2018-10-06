@@ -9,6 +9,9 @@
 [node name="player" parent="." index="0" instance=ExtResource( 1 )]
 
 _sections_unfolded = [ "Transform", "Z Index" ]
+acceleration = 15
+friction = 10
+vertical_snap_speed = 6
 
 [node name="background" parent="." index="1" instance=ExtResource( 2 )]
 
