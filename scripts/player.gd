@@ -7,14 +7,27 @@ export (int) var friction = 300
 export (int) var vertical_snap = 16
 export (int) var vertical_snap_speed = 310
 
+export (bool) var is_biking = false
+
 var velocity = Vector2()
 var origin_y
 var snapping_to_y
 
+
 func _ready():
 	origin_y = position.y
 	snapping_to_y = origin_y
+	set_process(true)
 
+func _process(delta):
+	if Input.is_action_just_pressed("mount_bike"):
+		is_biking = !is_biking
+		
+	if is_biking:
+		$player_state_animation.play("biking_idle")
+	else:
+		$player_state_animation.play("walking_idle")
+		
 func _physics_process(delta):
 	var change_x_velocity = 0
 	var change_y_velocity = 0
@@ -54,3 +67,6 @@ func _physics_process(delta):
 
 	# move player
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+
+func change_is_biking(new_is_biking):
+	is_biking = new_is_biking
