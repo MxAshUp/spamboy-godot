@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/level/tilemap.png" type="Texture" id=1]
+
+[node name="TileMap" type="Node2D" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="sidewalk" type="Sprite" parent="." index="0"]
+
+position = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="sidewal_entry_l" type="Sprite" parent="." index="1"]
+
+position = Vector2( 32, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="sidewalk_entry_r" type="Sprite" parent="." index="2"]
+
+position = Vector2( 48, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road" type="Sprite" parent="." index="3"]
+
+position = Vector2( 16, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_pothole_1" type="Sprite" parent="." index="4"]
+
+position = Vector2( 32, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_pothole_2" type="Sprite" parent="." index="5"]
+
+position = Vector2( 48, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 16, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_line_t_l" type="Sprite" parent="." index="6"]
+
+position = Vector2( 16, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_line_t_r" type="Sprite" parent="." index="7"]
+
+position = Vector2( 32, 48 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 32, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_line_b_l" type="Sprite" parent="." index="8"]
+
+position = Vector2( 16, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="road_line_b_r" type="Sprite" parent="." index="9"]
+
+position = Vector2( 32, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+
