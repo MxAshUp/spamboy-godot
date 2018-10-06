@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
 [node name="player" parent="." index="0" instance=ExtResource( 1 )]
 
