@@ -1,5 +1,7 @@
 extends Node2D
 
+signal feed
+
 var scoreScene = preload("res://scenes/scoreText.tscn")
 
 func _ready():
@@ -10,6 +12,7 @@ func feed():
 	var score = scoreScene.instance()
 	score.position = $scoreSpawn.position
 	self.add_child(score)
+	emit_signal("feed")
 
 
 func _input(event):

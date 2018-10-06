@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/background.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=2]
-[ext_resource path="res://scenes/obstacle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/mailbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=7]
+[ext_resource path="res://scripts/level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
+[ext_resource path="res://scenes/obstacle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/mailbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=8]
+[ext_resource path="res://scenes/audioSamples.tscn" type="PackedScene" id=9]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
-[node name="background" parent="." index="0" instance=ExtResource( 1 )]
+script = ExtResource( 1 )
+
+[node name="background" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
@@ -23,7 +27,7 @@ __meta__ = {
 position = Vector2( 0, -6 )
 z_index = -1
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -49,7 +53,7 @@ __meta__ = {
 position = Vector2( 0, -6 )
 z_index = -1
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -70,15 +74,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="obstacle" parent="mapStuff" index="2" instance=ExtResource( 3 )]
+[node name="obstacle" parent="mapStuff" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 72, 19 )
 
-[node name="mailbox" parent="mapStuff" index="3" instance=ExtResource( 4 )]
+[node name="mailbox" parent="mapStuff" index="3" groups=[
+"mailbox",
+] instance=ExtResource( 5 )]
 
 position = Vector2( -57, 10 )
 
-[node name="mailbox2" parent="mapStuff" index="4" instance=ExtResource( 4 )]
+[node name="mailbox2" parent="mapStuff" index="4" groups=[
+"mailbox",
+] instance=ExtResource( 5 )]
 
 position = Vector2( 144, 16 )
 
@@ -87,21 +95,20 @@ position = Vector2( 144, 16 )
 position = Vector2( 0, 27 )
 sort_enabled = true
 
-[node name="player" parent="YSort" index="0" instance=ExtResource( 5 )]
+[node name="player" parent="YSort" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -64, 5 )
 acceleration = 300
 friction = 300
-crashing = false
 
-[node name="bike" parent="YSort" index="1" instance=ExtResource( 6 )]
+[node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 32, 5 )
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
 modulate = Color( 1, 1, 1, 0.187843 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -114,5 +121,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Sound" parent="." index="5" instance=ExtResource( 9 )]
 
 
