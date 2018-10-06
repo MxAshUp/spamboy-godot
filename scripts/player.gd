@@ -4,7 +4,8 @@ export (int) var acceleration = 1000
 export (int) var max_speed = 200
 export (int) var friction = 1000
 
-export (int) var vertical_snap = 16 
+export (int) var vertical_snap = 16
+export (int) var vertical_snap_speed = 10
 
 var velocity = Vector2()
 var origin_y
@@ -30,9 +31,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		change_y_velocity += 1
 
+  # update horizontal veloxity
 	velocity.x += change_x_velocity * delta
+
+	# apply horizontal friction
 	velocity.x -= min(abs(velocity.x), friction * delta) * sign(velocity.x)
 
+	# don't allow x velocity to exceed max speed 
 	if abs(velocity.x) > max_speed:
 		velocity.x = sign(velocity.x) * max_speed
 
@@ -41,10 +46,10 @@ func _physics_process(delta):
 		snapping_to_y = floor((position.y + change_y_velocity - origin_y) / vertical_snap) * vertical_snap + origin_y
 		if change_y_velocity > 0:
 			snapping_to_y += vertical_snap
-
-		print(snapping_to_y)
-
+	
+	# set vertical velocity based on which position to snap to
 	if abs(snapping_to_y - position.y) > 0:
-		velocity.y = (snapping_to_y - position.y) * 10
+		velocity.y = (snapping_to_y - position.y) * vertical_snap_speed
 
+	# move player
 	position += velocity * delta
