@@ -15,6 +15,7 @@ export (bool) var is_biking = false
 
 var velocity = Vector2()
 var ridable_bike = null
+var last_move_dir = 1
 export (bool) var crashing = false
 
 func _ready():
@@ -24,14 +25,57 @@ func _ready():
 func can_move_player():
 	return !crashing
 
-func _process(delta):
-	if !crashing:
-		if is_biking:
-			$player_state_animation.play("biking_idle")
-		else:
-			$player_state_animation.play("walking_idle")
-		
+func process_animation_state():
+	var animation_to_play = $player_state_animation.current_animation
+	var move_direction = 0
 	
+	if is_biking:
+		# Handle left/right sprite mirror
+		if sign(velocity.x) != 0:
+			last_move_dir = sign(velocity.x)
+		
+		animation_to_play = "idle_bike_lr"
+	else:
+		var left_right_move = false
+		
+		if animation_to_play == "walk_lr":
+			animation_to_play = "idle_lr"
+		elif animation_to_play == "walk_up":
+			animation_to_play = "idle_up"
+		elif animation_to_play == "walk_down":
+			animation_to_play = "idle_lr"
+		
+		# Handle left/right sprite mirror
+		if Input.is_action_pressed("ui_left"):
+			last_move_dir = -1.0
+			left_right_move = true
+	
+		if Input.is_action_pressed("ui_right"):
+			last_move_dir = 1.0
+			left_right_move = true
+		
+		if left_right_move:
+			animation_to_play = "walk_lr"
+		else:
+			if Input.is_action_pressed("ui_up"):
+				animation_to_play = "walk_up"
+		
+			if Input.is_action_pressed("ui_down"):
+				animation_to_play = "walk_down"
+	
+	if animation_to_play != $player_state_animation.current_animation:
+		$player_state_animation.play(animation_to_play)
+		
+	if animation_to_play.ends_with('_lr'):
+		if last_move_dir < 0:
+			$charSprite.flip_h = true
+		elif last_move_dir > 0:
+			$charSprite.flip_h = false
+	
+func _process(delta):
+
+	process_animation_state()
+		
 func _physics_process(delta):
 	if !crashing and is_biking:
 		process_bike_physics(delta)
