@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="TileMap" type="Node2D"]
+[node name="TileMap" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -93,6 +93,7 @@ _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="grass_1" type="Sprite" parent="." index="10"]
 
+editor/display_folded = true
 position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -111,6 +112,156 @@ bounce = 0.0
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grass_1/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grass_2" type="Sprite" parent="." index="11"]
+
+editor/display_folded = true
+position = Vector2( 80, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass_2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_2/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grass_3" type="Sprite" parent="." index="12"]
+
+editor/display_folded = true
+position = Vector2( 96, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass_3" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_3/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grass_4" type="Sprite" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 112, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="grass_4" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass_4/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sidewal_up_l" type="Sprite" parent="." index="14"]
+
+editor/display_folded = true
+position = Vector2( 128, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sidewal_up_l" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewal_up_l/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sidewalk_up" type="Sprite" parent="." index="15"]
+
+editor/display_folded = true
+position = Vector2( 144, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sidewalk_up" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewalk_up/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="sidewalk_up_r" type="Sprite" parent="." index="16"]
+
+editor/display_folded = true
+position = Vector2( 160, 64 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 48, 16, 16 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sidewalk_up_r" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sidewalk_up_r/StaticBody2D" index="0"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
