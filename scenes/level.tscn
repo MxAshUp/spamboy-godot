@@ -78,6 +78,10 @@ position = Vector2( 72, 19 )
 
 position = Vector2( -57, 10 )
 
+[node name="mailbox2" parent="mapStuff" index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 144, 16 )
+
 [node name="YSort" type="YSort" parent="." index="2"]
 
 position = Vector2( 0, 27 )
