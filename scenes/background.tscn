@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/level/sky.png" type="Texture" id=1]
 [ext_resource path="res://assets/level/hills.png" type="Texture" id=2]
 [ext_resource path="res://assets/level/trees.png" type="Texture" id=3]
+[ext_resource path="res://assets/level/backyard.png" type="Texture" id=4]
 
 [node name="background" type="ParallaxBackground" index="0"]
 
@@ -21,35 +22,50 @@ _sections_unfolded = [ "Scroll" ]
 
 [node name="sky" type="ParallaxLayer" parent="." index="0"]
 
-motion_scale = Vector2( 0.1, 0 )
+motion_scale = Vector2( 0.1, 1 )
 motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 320, 0 )
+motion_mirroring = Vector2( 640, 0 )
 _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="sky" index="0"]
 
 texture = ExtResource( 1 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="hills" type="ParallaxLayer" parent="." index="1"]
 
-motion_scale = Vector2( 0.2, 0 )
+motion_scale = Vector2( 0.2, 1 )
 motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 320, 0 )
+motion_mirroring = Vector2( 640, 0 )
 _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="hills" index="0"]
 
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="trees" type="ParallaxLayer" parent="." index="2"]
 
-motion_scale = Vector2( 0.3, 0 )
+motion_scale = Vector2( 0.4, 1 )
 motion_offset = Vector2( 0, 0 )
-motion_mirroring = Vector2( 320, 0 )
+motion_mirroring = Vector2( 640, 0 )
 _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="trees" index="0"]
 
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="backyard" type="ParallaxLayer" parent="." index="3"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 640, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="backyard" index="0"]
+
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Offset" ]
 
 

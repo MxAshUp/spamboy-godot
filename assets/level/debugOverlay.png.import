@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilemap.png-e76884a6e68468887c6ec27a9e30e02d.stex"
+path="res://.import/debugOverlay.png-376dbeb3dc203684c674dc90d9ce155a.stex"
 
 [deps]
 
-source_file="res://assets/level/tilemap.png"
-dest_files=[ "res://.import/tilemap.png-e76884a6e68468887c6ec27a9e30e02d.stex" ]
+source_file="res://assets/level/debugOverlay.png"
+dest_files=[ "res://.import/debugOverlay.png-376dbeb3dc203684c674dc90d9ce155a.stex" ]
 
 [params]
 

@@ -7,3 +7,4 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 /_concepts
+/assets/level/*.ase

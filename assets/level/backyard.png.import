@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilemap.png-e76884a6e68468887c6ec27a9e30e02d.stex"
+path="res://.import/backyard.png-05df5fea68b701ae04f70e090f1683b1.stex"
 
 [deps]
 
-source_file="res://assets/level/tilemap.png"
-dest_files=[ "res://.import/tilemap.png-e76884a6e68468887c6ec27a9e30e02d.stex" ]
+source_file="res://assets/level/backyard.png"
+dest_files=[ "res://.import/backyard.png-05df5fea68b701ae04f70e090f1683b1.stex" ]
 
 [params]
 
