@@ -28,13 +28,20 @@ func _ready():
 func _process(delta):
 	# @todo - it's more complicated than this
 	if Input.is_action_just_pressed("mount_bike"):
+		
+		# getting off the bikle
 		if is_biking:
 			is_biking = false
 			if ridable_bike:
-				ridable_bike.position = position
+				snapping_to_y = floor((position.y - vertical_snap / 4 - origin_y) / vertical_snap) * vertical_snap + origin_y
+				ridable_bike.position = Vector2(position.x, round((position.y - origin_y) / vertical_snap) * vertical_snap + origin_y)
 				ridable_bike.show()
+		
+		# Getting on the bike
 		elif ridable_bike:
 			is_biking = true
+			position = ridable_bike.position
+			velocity = Vector2()
 			ridable_bike.hide()
 		
 	if is_biking:
