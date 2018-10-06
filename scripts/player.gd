@@ -78,7 +78,13 @@ func process_animation_state():
 			$charSprite.flip_h = false
 	
 func _process(delta):
-
+	if is_biking:
+		$collision_bike.disabled = false
+		$collision_char.disabled = true
+	else:
+		$collision_bike.disabled = true
+		$collision_char.disabled = false
+				
 	process_animation_state()
 		
 func _physics_process(delta):
