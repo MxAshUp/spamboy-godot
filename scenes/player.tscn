@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 10 )
+extents = Vector2( 16, 8 )
 
 [node name="player" type="KinematicBody2D" index="0"]
 
@@ -22,8 +22,10 @@ vertical_snap = 16
 
 [node name="bike" type="Sprite" parent="." index="0"]
 
-position = Vector2( 0, -19 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 2 )
+offset = Vector2( 0, 4 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="cam" type="Camera2D" parent="." index="1"]
 
@@ -53,6 +55,8 @@ _sections_unfolded = [ "Smoothing" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
+position = Vector2( 0, 8 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 
