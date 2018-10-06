@@ -18,6 +18,7 @@ export (bool) var is_biking = false
 var velocity = Vector2()
 var origin_y
 var snapping_to_y
+var ridable_bike = null
 
 func _ready():
 	origin_y = position.y
@@ -29,13 +30,19 @@ func _process(delta):
 	if Input.is_action_just_pressed("mount_bike"):
 		if is_biking:
 			is_biking = false
-		elif true: #todo - if touch bike node
+			if ridable_bike:
+				ridable_bike.position = position
+				ridable_bike.show()
+		elif ridable_bike:
 			is_biking = true
+			ridable_bike.hide()
 		
 	if is_biking:
 		$player_state_animation.play("biking_idle")
 	else:
 		$player_state_animation.play("walking_idle")
+		
+	
 		
 func _physics_process(delta):
 	var change_x_velocity = 0
@@ -82,3 +89,13 @@ func _physics_process(delta):
 	# move player
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
+
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
+	if area.get_name() == "bike":
+		ridable_bike = area
+
+
+func _on_Area2D_area_shape_exited(area_id, area, area_shape, self_shape):
+	if area.get_name() == "bike" and !is_biking:
+		ridable_bike = null
