@@ -7,4 +7,4 @@ func _ready():
 
 # todo - score and such
 func handle_feed():
-	$audioSamples.play("ui_good")
+	print("score!")

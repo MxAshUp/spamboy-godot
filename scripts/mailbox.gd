@@ -13,6 +13,7 @@ func _ready():
 
 func feed(sender):
 	if mail_count < mail_capacity:
+		$stuffSound2.play()
 		mail_count += 1
 		$AnimationPlayer.play("feeded")
 		spawn_score_text(str(mail_count * 100))
