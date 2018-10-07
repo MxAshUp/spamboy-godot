@@ -8,14 +8,16 @@ export (int) var crash_speed = 200
 export (int) var walkling_acceleration = 400
 export (int) var walking_max_speed = 75
 export (int) var walking_friction = 600
-export (int) var walking_vertical_snap_speed = 200
-
 
 export (bool) var is_biking = false
+
+signal stuff_mail
 
 var velocity = Vector2()
 var ridable_bike = null
 var last_move_dir = 1
+var facing_up = false
+
 export (bool) var crashing = false
 
 func _ready():
@@ -60,13 +62,13 @@ func process_animation_state():
 		
 		if left_right_move:
 			animation_to_play = "walk_lr"
-		else:
-			if Input.is_action_pressed("ui_up"):
-				animation_to_play = "walk_up"
-		
+		else:		
 			if Input.is_action_pressed("ui_down"):
 				animation_to_play = "walk_down"
-	
+			
+			if Input.is_action_pressed("ui_up"):
+				animation_to_play = "walk_up"
+
 	if animation_to_play != $player_state_animation.current_animation:
 		$player_state_animation.play(animation_to_play)
 		
@@ -76,6 +78,12 @@ func process_animation_state():
 		elif last_move_dir > 0:
 			$charSprite.flip_h = false
 	
+	if $player_state_animation.current_animation.ends_with("_up"):
+		facing_up = true
+	elif $player_state_animation.current_animation != "":
+		facing_up = false
+
+	
 func _process(delta):
 	if is_biking:
 		$collision_bike.disabled = false
@@ -83,7 +91,10 @@ func _process(delta):
 	else:
 		$collision_bike.disabled = true
 		$collision_char.disabled = false
-				
+	
+	if !is_biking and facing_up and Input.is_action_just_pressed("spam"):
+		emit_signal("stuff_mail", self)
+		
 	process_animation_state()
 		
 func _physics_process(delta):
@@ -100,8 +111,7 @@ func _physics_process(delta):
 		
 		# Getting on the bike
 		elif ridable_bike:
-			mount_bike()
-			
+			mount_bike()		
 			
 func process_bike_physics(delta):
 	var change_x_velocity = 0
@@ -198,7 +208,6 @@ func process_walk_physics(delta):
 	
 	velocity = new_velocity
 
-
 func mount_bike():
 	is_biking = true
 	position = ridable_bike.position
@@ -218,11 +227,9 @@ func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	if area.get_name() == "bike":
 		ridable_bike = area
 
-
 func _on_Area2D_area_shape_exited(area_id, area, area_shape, self_shape):
 	if area.get_name() == "bike" and !is_biking:
 		ridable_bike = null
-
 
 func _on_player_state_animation_animation_finished(anim_name):
 	if anim_name == "crashing":
