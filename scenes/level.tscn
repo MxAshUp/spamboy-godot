@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -117,7 +117,6 @@ position = Vector2( -64, 5 )
 _sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 50
-brake_friction = 450
 
 [node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 
@@ -197,7 +196,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.710938, 1, 0.722229, 1 )
 custom_colors/font_color_shadow = Color( 0.289345, 0.390625, 0.280762, 1 )
 custom_constants/shadow_as_outline = 1
-text = "00:00"
+text = "00/10"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -248,7 +247,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.710938, 1, 0.993225, 1 )
 custom_colors/font_color_shadow = Color( 0.280762, 0.318527, 0.390625, 1 )
 custom_constants/shadow_as_outline = 1
-text = "00/10"
+text = "00:00"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
