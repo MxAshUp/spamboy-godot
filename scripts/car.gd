@@ -6,13 +6,16 @@ var carHasToBrake = false
 var ignoreBreakAreaOnPlayer = false
 var maxSpeed = 0
 
-
+func _ready():
+	$blueLight.enabled = false
+	$redLight.enabled = false
 
 func init(pMaxSpeed, forcePoliceCar = false):
 	if forcePoliceCar == true:
 		#Spawning car shall be a police car
 		$Sprite.set_frame(0)
 		ignoreBreakAreaOnPlayer = true
+		$policeAnim.play("blueLight")
 	else:
 		#Random car
 		$Sprite.set_frame(randi() % 3 + 1)

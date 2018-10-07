@@ -28,7 +28,7 @@ extents = Vector2( 41, 6 )
 custom_solver_bias = 0.0
 extents = Vector2( 7.96082, 6 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 resource_name = "idle"
 length = 0.4
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -19 ), Vector2( 0, -20 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 resource_name = "blueLight"
 length = 1.0
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("regLight:enabled")
+tracks/1/path = NodePath("redLight:enabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -78,7 +78,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="car" type="KinematicBody2D" index="0"]
+[node name="car" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -154,23 +154,23 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle = SubResource( 6 )
+anims/idle = SubResource( 5 )
 blend_times = [  ]
 
 [node name="policeAnim" type="AnimationPlayer" parent="." index="6"]
 
 root_node = NodePath("..")
-autoplay = "blueLight"
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/blueLight = SubResource( 7 )
+anims/blueLight = SubResource( 6 )
 blend_times = [  ]
 
 [node name="blueLight" type="Light2D" parent="." index="7"]
 
 position = Vector2( 0, -27 )
-enabled = true
+enabled = false
 editor_only = false
 texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
@@ -192,7 +192,7 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="regLight" type="Light2D" parent="." index="8"]
+[node name="redLight" type="Light2D" parent="." index="8"]
 
 position = Vector2( 5, -31 )
 enabled = false

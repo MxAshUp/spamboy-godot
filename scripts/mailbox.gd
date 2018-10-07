@@ -22,6 +22,9 @@ func feed(sender):
 	else:
 		spawn_score_text("FULL", "spawn_b", rate_limit_text)
 		rate_limit_text = 1
+		#Open the door
+		if get_parent().has_method("openDoor"):
+			get_parent().openDoor()
 
 func spawn_score_text(text, animation = "spawn_a", limit = 0):
 	
