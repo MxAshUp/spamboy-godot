@@ -16,8 +16,12 @@ func feed(sender):
 	if mail_count < mail_capacity:
 		$stuffSound2.play()
 		mail_count += 1
-		$AnimationPlayer.play("feeded")
-		spawn_score_text(str(mail_count * 100))
+		if mail_count >= mail_capacity:
+			$AnimationPlayer.play("full")
+			spawn_score_text(str(mail_count * 100 * 2))
+		else:
+			$AnimationPlayer.play("feeded")
+			spawn_score_text(str(mail_count * 100))
 		emit_signal("feed")
 	else:
 		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.5,0.5,0.5))
