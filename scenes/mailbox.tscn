@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/mailbox.gd" type="Script" id=1]
 [ext_resource path="res://assets/level/mailbox.png" type="Texture" id=2]
 [ext_resource path="res://assets/level/placementHelper.png" type="Texture" id=3]
 [ext_resource path="res://assets/sound/Stuffing Mailbox_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sound/Rustle.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/UI_Bad.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -61,7 +62,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="mailbox" type="Node2D"]
+[node name="mailbox" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
@@ -111,7 +112,7 @@ blend_times = [  ]
 
 position = Vector2( 0, -7 )
 
-[node name="stuffSound" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="stuffSoundClose" type="AudioStreamPlayer2D" parent="." index="5"]
 
 stream = ExtResource( 4 )
 volume_db = -32.07
@@ -133,7 +134,18 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="spawnedText" type="Node2D" parent="." index="7"]
+[node name="stuffSoundBad" type="AudioStreamPlayer2D" parent="." index="7"]
+
+stream = ExtResource( 6 )
+volume_db = -32.07
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="spawnedText" type="Node2D" parent="." index="8"]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

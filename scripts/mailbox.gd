@@ -17,6 +17,7 @@ func feed(sender):
 		$stuffSound2.play()
 		mail_count += 1
 		if mail_count >= mail_capacity:
+			$stuffSoundClose.play()
 			$AnimationPlayer.play("full")
 			spawn_score_text(str(mail_count * 100 * 2))
 		else:
@@ -24,7 +25,8 @@ func feed(sender):
 			spawn_score_text(str(mail_count * 100))
 		emit_signal("feed")
 	else:
-		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.5,0.5,0.5))
+		$stuffSoundBad.play()
+		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.8,0.8,0.8))
 		rate_limit_text = 1
 		#Open the door
 		if get_parent().has_method("openDoor"):
