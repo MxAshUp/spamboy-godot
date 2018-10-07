@@ -7,6 +7,7 @@ var scoreScene = preload("res://scenes/scoreText.tscn")
 export(String, "SMALL", "MEDIUM", "LARGE") var type = "MEDIUM" setget set_mailbox_type
 var mail_capacity
 export (int) var mail_count = 0
+var rate_limit_text = 0
 
 func _ready():
 	$debug.hide()
@@ -19,15 +20,19 @@ func feed(sender):
 		spawn_score_text(str(mail_count * 100))
 		emit_signal("feed")
 	else:
-		spawn_score_text("FULL", "spawn_b")
-		pass
+		spawn_score_text("FULL", "spawn_b", rate_limit_text)
+		rate_limit_text = 1
 
-func spawn_score_text(text, animation = "spawn_a"):
+func spawn_score_text(text, animation = "spawn_a", limit = 0):
+	
+	if limit > 0 and $spawnedText.get_child_count() >= limit:
+		return
+		
 	var score = scoreScene.instance()
 	score.text = text
 	score.position = $scoreSpawn.position
 	score.animation = animation
-	self.add_child(score)
+	$spawnedText.add_child(score)
 
 func _on_Area2D_body_entered(body):
 	body.connect("stuff_mail",self,"feed") 
