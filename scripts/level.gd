@@ -25,15 +25,6 @@ func handle_feed():
 func setCameraActive():
 	$"YSort/player/cam".make_current()
 
-
-func _input(event): #TODO remove me :>
-	if event.is_action_pressed("ui_accept"):
-		spawnCar()
-		#spawnCar(true) #spawn police
-	if event is InputEventMouseMotion:
-		$hud/debug2.set_text(str(event.position))
-
-
 func spawnCar(isPoliceCar = false):
 	var selectedLane = lanes[(randi() % lanes.size())]
 	var maxSpeed = max(carMinSpeed, (randi() % carMaxSpeed))
