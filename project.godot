@@ -14,6 +14,10 @@ config/name="SpamBoy"
 run/main_scene="res://scenes/master.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://scripts/global.gd"
+
 [display]
 
 window/size/width=320

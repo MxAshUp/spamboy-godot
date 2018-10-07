@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
@@ -8,9 +8,22 @@
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=8]
-[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=10]
 
-[node name="level" type="Node2D" index="0"]
+[sub_resource type="DynamicFont" id=1]
+
+size = 16
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Theme" id=2]
+
+default_font = SubResource( 1 )
+
+[node name="level" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -18,7 +31,6 @@ script = ExtResource( 1 )
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -99,12 +111,14 @@ sort_enabled = true
 [node name="player" parent="YSort" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -64, 5 )
+_sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 300
 
 [node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 32, 5 )
+_sections_unfolded = [ "Collision", "Z Index" ]
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
@@ -124,9 +138,52 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
+[node name="debug" type="Label" parent="hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "Debug"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="debug2" type="Label" parent="hud" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "Debug"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
