@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
-var textureArray = [preload("res://assets/dummyCar.png")]
-var policeCarTexture = preload("res://assets/dummyCar.png")
+
 
 var carHasToBrake = false
 var ignoreBreakAreaOnPlayer = false
@@ -12,11 +11,11 @@ var maxSpeed = 0
 func init(pMaxSpeed, forcePoliceCar = false):
 	if forcePoliceCar == true:
 		#Spawning car shall be a police car
-		$Sprite.set_texture(policeCarTexture)
+		$Sprite.set_frame(0)
 		ignoreBreakAreaOnPlayer = true
 	else:
 		#Random car
-		$Sprite.set_texture(textureArray[randi() % textureArray.size()])
+		$Sprite.set_frame(randi() % 3 + 1)
 	#Setting max speed
 	maxSpeed = pMaxSpeed
 	
