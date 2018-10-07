@@ -23,6 +23,7 @@ export (bool) var crashing = false
 onready var masterNode = get_parent().get_parent().get_parent()
 
 func _ready():
+	$charSprite.set_frame(0)
 	set_process(true)
 
 # some conditions don't allow the player to move. Add those here.
@@ -35,7 +36,10 @@ func process_animation_state():
 
 	if is_biking:
 		
-		animation_to_play = "idle_bike_lr"
+		if velocity.x:
+			animation_to_play = "cycle_lr"
+		else:
+			animation_to_play = "idle_bike_lr"
 		
 		if crashing:
 			animation_to_play = "crashing"
@@ -54,6 +58,7 @@ func process_animation_state():
 		elif animation_to_play == "walk_down":
 			animation_to_play = "idle_lr"
 		
+
 		# Handle left/right sprite mirror
 		if Input.is_action_pressed("ui_left"):
 			last_move_dir = -1.0
