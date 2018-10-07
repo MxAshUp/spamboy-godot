@@ -10,15 +10,20 @@ var active_level = null setget set_active_level
 func setCameraActive():
 	$Camera2D.make_current()
 
+func unpause_active_level():
+	if active_level != null and active_level.level_active:
+		hide()
+		active_level.unpause_level()
+
 func _on_resumeBtn_button_down():
 	if not creditsActive:
-		if active_level != null and active_level.level_active:
-			hide()
-			active_level.unpause_level()
+		$clickSound.play()
+		unpause_active_level()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		_on_resumeBtn_button_down()
+		if not creditsActive:
+			unpause_active_level()
 
 func set_active_level(new_active_level):
 	if new_active_level == null:
@@ -44,6 +49,7 @@ func _on_newgameBtn_button_down():
 		active_level.objective_seconds = 120
 		set_active_level(active_level)
 		hide()
+		$clickSound.play()
 
 func level_finished(finished_level, score):
 	show()
@@ -58,12 +64,15 @@ func _on_creditsBtn_button_down():
 	if not creditsActive:
 		creditsActive = true
 		$credits.show()
+		$clickSound.play()
 
 func _on_quitBtn_button_down():
 	if not creditsActive:
+		$clickSound.play()
 		get_tree().quit()
 
 func _on_backBtn_button_down():
 	if creditsActive:
 		creditsActive = false
 		$credits.hide()
+		$clickSound.play()
