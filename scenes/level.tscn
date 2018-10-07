@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="level" type="Node2D" index="0"]
+[node name="level" type="Node2D"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -117,6 +117,7 @@ position = Vector2( -64, 5 )
 _sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 50
+brake_friction = 450
 
 [node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 

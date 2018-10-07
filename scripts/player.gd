@@ -3,6 +3,7 @@ extends KinematicBody2D
 export (int) var acceleration = 300
 export (int) var max_speed = 250
 export (int) var friction = 50
+export (int) var brake_friction = 450
 export (int) var crash_speed = 200
 
 export (int) var walkling_acceleration = 400
@@ -193,8 +194,11 @@ func process_bike_physics(delta):
 	if Input.is_action_pressed("ui_down") and can_move_player():
 			change_velocity_angle += 1
 
-	change_x_velocity = change_x_velocity * acceleration
-
+	if is_trying_to_move():
+		change_x_velocity = change_x_velocity * acceleration
+	elif is_trying_to_stop():
+		change_x_velocity = change_x_velocity * brake_friction
+		
 	# apply horizontal friction
 	if change_x_velocity == 0:
 		velocity.x -= min(abs(velocity.x), friction * delta) * sign(velocity.x)
