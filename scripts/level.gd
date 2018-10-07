@@ -35,7 +35,7 @@ func _process(delta):
 	updateCarSpawnLocations()
 	process_score(delta)
 	
-	if Input.is_action_just_pressed("ui_cancel") and $pauseThrottle.time_left == 0:
+	if Input.is_action_just_pressed("ui_cancel") and $pauseThrottle.time_left == 0 and level_active:
 		pause_level()
 
 func _on_pauseThrottle_timeout():

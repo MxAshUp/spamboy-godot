@@ -12,7 +12,7 @@ func setCameraActive():
 
 func _on_resumeBtn_button_down():
 	if not creditsActive:
-		if active_level != null:
+		if active_level != null and active_level.level_active:
 			hide()
 			active_level.unpause_level()
 
