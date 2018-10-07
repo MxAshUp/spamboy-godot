@@ -26,7 +26,7 @@ extents = Vector2( 41, 6 )
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7.96082, 6 )
+extents = Vector2( 30, 6 )
 
 [sub_resource type="Animation" id=5]
 
@@ -78,12 +78,15 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="car" type="KinematicBody2D"]
+[node name="car" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -94,7 +97,7 @@ texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-position = Vector2( 0, -21.4348 )
+position = Vector2( 0, -19 )
 scale = Vector2( 1, 1.1 )
 texture = ExtResource( 3 )
 hframes = 4
@@ -126,13 +129,11 @@ _sections_unfolded = [ "Theme" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-visible = false
 position = Vector2( 1, -6 )
 shape = SubResource( 3 )
 
 [node name="breakingArea" type="Area2D" parent="." index="4"]
 
-visible = false
 position = Vector2( 52, 0 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -144,7 +145,8 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="breakingArea" index="0"]
 
-position = Vector2( -1, -6 )
+position = Vector2( -13, -6 )
+scale = Vector2( 1.18182, 1 )
 shape = SubResource( 4 )
 
 [node name="driveAnim" type="AnimationPlayer" parent="." index="5"]

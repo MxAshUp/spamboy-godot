@@ -1,8 +1,8 @@
 extends Node2D
 
 const carMaxSpeed = 350 #todo optimize value
-const carMinSpeed = 50  #todo optimize value
-const carSpawnOffset = Vector2(100, 0) #todo half screensize + offset so the car wont be seen
+const carMinSpeed = 300  #todo optimize value
+const carSpawnOffset = Vector2(256, 0)
 
 onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
 onready var playerNode = $YSort/player
@@ -42,12 +42,12 @@ func spawnCar(isPoliceCar = false):
 	var thisCar = carScene.instance()
 	thisCar.init(maxSpeed, isPoliceCar)
 	
-	if maxSpeed > playerNode.max_speed:
+	#if maxSpeed > playerNode.velocity.x:
 		#Spawn car behind player
-		thisCar.position = selectedLane - carSpawnOffset
-	else:
+	thisCar.position = selectedLane - carSpawnOffset
+	#else:
 		#Spawn car in front of player
-		thisCar.position = selectedLane + carSpawnOffset
+	#	thisCar.position = selectedLane + carSpawnOffset
 	
 	#todo check if there is another car at this position
 	print(thisCar.position)
