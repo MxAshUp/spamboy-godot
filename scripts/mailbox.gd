@@ -15,16 +15,17 @@ func feed(sender):
 	if mail_count < mail_capacity:
 		mail_count += 1
 		$AnimationPlayer.play("feeded")
-		spawn_score_text( str(mail_count * 100))
+		spawn_score_text(str(mail_count * 100))
 		emit_signal("feed")
 	else:
-		spawn_score_text("FULL")
+		spawn_score_text("FULL", "spawn_b")
 		pass
 
-func spawn_score_text(text):
+func spawn_score_text(text, animation = "spawn_a"):
 	var score = scoreScene.instance()
 	score.text = text
 	score.position = $scoreSpawn.position
+	score.animation = animation
 	self.add_child(score)
 
 func _on_Area2D_body_entered(body):
