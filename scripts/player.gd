@@ -20,6 +20,7 @@ var velocity = Vector2()
 var ridable_bike = null
 var last_move_dir = 1
 var facing_up = false
+var spamming = false
 
 export (bool) var crashing = false
 
@@ -33,7 +34,7 @@ func _ready():
 
 # some conditions don't allow the player to move. Add those here.
 func can_move_player():
-	return !crashing
+	return !crashing and !spamming
 
 func process_animation_state():
 	var animation_to_play = $player_state_animation.current_animation
@@ -86,6 +87,9 @@ func process_animation_state():
 			if Input.is_action_pressed("ui_up"):
 				animation_to_play = "walk_up"
 
+		if spamming:
+			animation_to_play = "spamming_up"
+
 	if animation_to_play != $player_state_animation.current_animation:
 		$player_state_animation.play(animation_to_play)
 		
@@ -131,7 +135,9 @@ func _process(delta):
 		$collision_bike.disabled = true
 		$collision_char.disabled = false
 	
-	if !is_biking and facing_up and Input.is_action_just_pressed("spam"):
+	if !is_biking and facing_up and Input.is_action_just_pressed("spam") and !spamming:
+		spamming = true
+		$spamThrottle.start()
 		emit_signal("stuff_mail", self)
 
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -302,4 +308,10 @@ func _on_player_state_animation_animation_finished(anim_name):
 
 
 func _on_Timer_timeout_reset_max_speed():
+	$Timer.stop()
 	max_speed_factor = 1
+
+
+func _on_spamThrottle_timeout():
+	$spamThrottle.stop()
+	spamming = false
