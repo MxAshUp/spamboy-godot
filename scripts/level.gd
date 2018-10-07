@@ -64,3 +64,6 @@ func updateCarSpawnLocations():
 	lanes[1].x = playerNode.position.x
 	lanes[2].x = playerNode.position.x
 	$hud/debug.set_text(str(lanes[1]))
+
+func _on_player_delta_time(delta):
+	print("Losing time" + str(delta))

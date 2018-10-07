@@ -12,6 +12,8 @@ export (int) var walking_friction = 600
 export (bool) var is_biking = false
 
 signal stuff_mail
+signal delta_time
+signal delta_score
 
 var velocity = Vector2()
 var ridable_bike = null
@@ -21,6 +23,8 @@ var facing_up = false
 export (bool) var crashing = false
 
 onready var masterNode = get_parent().get_parent().get_parent()
+
+var textScene = preload("res://scenes/scoreText.tscn")
 
 func _ready():
 	set_process(true)
@@ -251,6 +255,23 @@ func dismount_bike():
 		ridable_bike.show()
 		move_and_collide(Vector2(0, -4))
 	$player_state_animation.play("idle_lr")
+
+func spawn_text(text, animation = "spawn_b", limit = 0):
+	
+	if limit > 0 and $spawnedText.get_child_count() >= limit:
+		return
+		
+	var score = textScene.instance()
+	score.text = text
+	score.position = $spawnTextPos.position
+	score.animation = animation
+	score.text_color = Color(1,1,0,1)
+	$spawnedText.add_child(score)
+	
+func grumbled_at(delta):
+	# subtract time from available time
+	emit_signal("delta_time", - delta)
+	spawn_text("Sorry!", "spawn_a", 1)
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	if area.get_name() == "bike":

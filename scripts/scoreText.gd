@@ -2,9 +2,11 @@ extends Node2D
 
 export (String) var text = "" setget setText
 export (String, "spawn_a", "spawn_b") var animation = "spawn_a"
+export (Color) var text_color = Color(255, 255, 255)
 
 func _ready():
 	$AnimationPlayer.play(animation)
+	$container/text.add_color_override("font_color", text_color)
 
 func setText(new_text):
 	if $container/text:

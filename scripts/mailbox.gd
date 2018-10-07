@@ -20,13 +20,13 @@ func feed(sender):
 		spawn_score_text(str(mail_count * 100))
 		emit_signal("feed")
 	else:
-		spawn_score_text("FULL", "spawn_b", rate_limit_text)
+		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.5,0.5,0.5))
 		rate_limit_text = 1
 		#Open the door
 		if get_parent().has_method("openDoor"):
 			get_parent().openDoor()
 
-func spawn_score_text(text, animation = "spawn_a", limit = 0):
+func spawn_score_text(text, animation = "spawn_a", limit = 0, color = Color(1,1,1)):
 	
 	if limit > 0 and $spawnedText.get_child_count() >= limit:
 		return
@@ -35,6 +35,7 @@ func spawn_score_text(text, animation = "spawn_a", limit = 0):
 	score.text = text
 	score.position = $scoreSpawn.position
 	score.animation = animation
+	score.text_color = color
 	$spawnedText.add_child(score)
 
 func _on_Area2D_body_entered(body):

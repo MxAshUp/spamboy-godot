@@ -199,7 +199,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Editor", "Limit", "Smoothing" ]
+_sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform", "Z Index" ]
 
 [node name="collision_bike" type="CollisionShape2D" parent="." index="2"]
 
@@ -283,6 +283,12 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+
+[node name="spawnTextPos" type="Position2D" parent="." index="7"]
+
+position = Vector2( 0, -5 )
+
+[node name="spawnedText" type="Node2D" parent="." index="8"]
 
 [connection signal="animation_finished" from="player_state_animation" to="." method="_on_player_state_animation_animation_finished"]
 
