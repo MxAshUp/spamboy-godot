@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/sounds.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/UI_Good.wav" type="AudioStream" id=2]
 
-[node name="Node" type="Node"]
+[node name="audioSamples" type="Node" index="0"]
 
 script = ExtResource( 1 )
 

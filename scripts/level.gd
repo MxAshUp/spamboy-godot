@@ -6,4 +6,4 @@ func _ready():
 		i.connect("feed", self, "handle_feed")
 	
 func handle_feed():
-	$Sound.play("ui_good")
+	$audioSamples.play("ui_good")
