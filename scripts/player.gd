@@ -14,6 +14,7 @@ export (bool) var is_biking = false
 signal stuff_mail
 signal delta_time
 signal delta_score
+var max_speed_factor = 1
 
 var velocity = Vector2()
 var ridable_bike = null
@@ -36,7 +37,7 @@ func can_move_player():
 
 func process_animation_state():
 	var animation_to_play = $player_state_animation.current_animation
-
+	$player_state_animation.playback_speed = 1
 
 	if is_biking:
 		
@@ -53,6 +54,10 @@ func process_animation_state():
 			last_move_dir = sign(velocity.x)
 		
 	else:
+		
+		if max_speed_factor < 1:
+			$player_state_animation.playback_speed = 0.6
+		
 		var left_right_move = false
 		
 		if animation_to_play == "walk_lr":
@@ -100,7 +105,8 @@ func is_trying_to_move():
 
 func process_sounds():
 	
-	if !is_biking and is_trying_to_move() and velocity.length() > 20:
+	
+	if !is_biking and is_trying_to_move() and velocity.length() > 20 and max_speed_factor == 1:
 		if !$Sounds/walking.playing:
 			$Sounds/walking.play()
 	elif velocity.length() < 20:
@@ -227,16 +233,16 @@ func process_walk_physics(delta):
 		velocity.x -= min(abs(velocity.x), walking_friction * delta) * sign(velocity.x)
 		
 	# don't allow x velocity to exceed max walking speed 
-	if abs(velocity.x) > walking_max_speed:
-		velocity.x = sign(velocity.x) * walking_max_speed
+	if abs(velocity.x) > walking_max_speed*max_speed_factor:
+		velocity.x = sign(velocity.x) * walking_max_speed*max_speed_factor
 	
 	# apply vertical walking friction
 	if change_y_velocity == 0:
 		velocity.y -= min(abs(velocity.y), walking_friction * delta) * sign(velocity.y)
 
 	# don't allow y velocity to exceed max speed 
-	if abs(velocity.y) > walking_max_speed:
-		velocity.y = sign(velocity.y) * walking_max_speed
+	if abs(velocity.y) > walking_max_speed*max_speed_factor:
+		velocity.y = sign(velocity.y) * walking_max_speed*max_speed_factor
 
 	velocity.y += change_y_velocity * delta
 	velocity.x += change_x_velocity * delta
@@ -275,6 +281,8 @@ func spawn_text(text, animation = "spawn_b", limit = 0):
 	
 func grumbled_at(delta):
 	# subtract time from available time
+	max_speed_factor = 0.2
+	$Timer.start()
 	emit_signal("delta_time", - delta)
 	spawn_text("Sorry!", "spawn_a", 1)
 
@@ -291,3 +299,7 @@ func _on_player_state_animation_animation_finished(anim_name):
 		crashing = false
 		dismount_bike()
 		
+
+
+func _on_Timer_timeout_reset_max_speed():
+	max_speed_factor = 1

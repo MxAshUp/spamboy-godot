@@ -290,10 +290,19 @@ position = Vector2( 0, -5 )
 
 [node name="spawnedText" type="Node2D" parent="." index="8"]
 
+[node name="Timer" type="Timer" parent="." index="9"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="animation_finished" from="player_state_animation" to="." method="_on_player_state_animation_animation_finished"]
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout_reset_max_speed"]
 
 
