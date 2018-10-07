@@ -22,6 +22,9 @@ func _process(delta):
 func handle_feed():
 	print("score!")
 
+func setCameraActive():
+	$"YSort/player/cam".make_current()
+
 
 func _input(event): #TODO remove me :>
 	if event.is_action_pressed("ui_accept"):

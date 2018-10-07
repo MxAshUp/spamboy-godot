@@ -1,5 +1,11 @@
 extends Node
 
+enum GAMESTATE_ENUM { MAIN, CREDITS, GAME }
+
+var gameState = MAIN
+
+
+
 #Game Score
 var score = 0 
 #Elapsed Time on Level

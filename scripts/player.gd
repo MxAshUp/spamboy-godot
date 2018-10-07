@@ -20,6 +20,8 @@ var facing_up = false
 
 export (bool) var crashing = false
 
+onready var masterNode = get_parent().get_parent().get_parent()
+
 func _ready():
 	set_process(true)
 
@@ -29,7 +31,8 @@ func can_move_player():
 
 func process_animation_state():
 	var animation_to_play = $player_state_animation.current_animation
-	
+
+
 	if is_biking:
 		
 		animation_to_play = "idle_bike_lr"
@@ -112,7 +115,10 @@ func _process(delta):
 	
 	if !is_biking and facing_up and Input.is_action_just_pressed("spam"):
 		emit_signal("stuff_mail", self)
-		
+
+	if Input.is_action_just_pressed("ui_cancel"):
+		masterNode.switchGameState(global.MAIN)
+
 	process_animation_state()
 	process_sounds()
 		
