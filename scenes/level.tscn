@@ -3,12 +3,12 @@
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
-[ext_resource path="res://scenes/obstacle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/mailbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/dog.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/mailbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/dog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/obstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=10]
 [ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=12]
@@ -89,47 +89,47 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="obstacle" parent="mapStuff" index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 72, 19 )
-
-[node name="door" parent="mapStuff" index="3" instance=ExtResource( 5 )]
+[node name="door" parent="mapStuff" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( -88, -6 )
 behindDoor = "ANGRYMEN"
 
 [node name="mailbox" parent="mapStuff/door" index="3" groups=[
 "mailbox",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 5 )]
 
 position = Vector2( 31, 16 )
 
-[node name="mailbox2" parent="mapStuff" index="4" groups=[
+[node name="mailbox2" parent="mapStuff" index="3" groups=[
 "mailbox",
-] instance=ExtResource( 6 )]
+] instance=ExtResource( 5 )]
 
 position = Vector2( 144, 16 )
-
-[node name="dog" parent="mapStuff" index="5" instance=ExtResource( 7 )]
-
-position = Vector2( -140, 16 )
 
 [node name="YSort" type="YSort" parent="." index="2"]
 
 position = Vector2( 0, 27 )
 sort_enabled = true
 
-[node name="player" parent="YSort" index="0" instance=ExtResource( 8 )]
+[node name="player" parent="YSort" index="0" instance=ExtResource( 6 )]
 
 position = Vector2( -64, 5 )
 _sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 300
 
-[node name="bike" parent="YSort" index="1" instance=ExtResource( 9 )]
+[node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( 32, 5 )
 _sections_unfolded = [ "Collision", "Z Index" ]
+
+[node name="dog" parent="YSort" index="2" instance=ExtResource( 8 )]
+
+position = Vector2( -140, -11 )
+
+[node name="obstacle" parent="YSort" index="3" instance=ExtResource( 9 )]
+
+position = Vector2( 72, -8 )
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
