@@ -32,11 +32,13 @@ tracks/0/keys = {
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+type = "MEDIUM"
+mail_count = 0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="debug" type="Sprite" parent="." index="1"]
 
@@ -46,6 +48,7 @@ texture = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
