@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (int) var acceleration = 300
 export (int) var max_speed = 250
-export (int) var friction = 300
+export (int) var friction = 50
 export (int) var crash_speed = 200
 
 export (int) var walkling_acceleration = 400
@@ -130,11 +130,16 @@ func process_sounds():
 		if $Sounds/walking.playing:
 			$Sounds/walking.stop()
 			
-	if is_biking and abs(velocity.x) > 0:# and is_trying_to_move():
+	if is_biking and abs(velocity.x) > 5 and !is_trying_to_stop():
 		if !$Sounds/biking.playing:
 			$Sounds/biking.play()
-		# get louder as get faster
-		$Sounds/biking.volume_db = -60 + min(1.0, abs(velocity.x) / max_speed) * 30
+		if is_trying_to_move():
+			# quieter when peddling
+			$Sounds/biking.volume_db = -60
+		else:
+			# coasting	
+			# get louder as get faster
+			$Sounds/biking.volume_db = -70 + min(1.0, abs(velocity.x) / max_speed) * 30
 		
 	else:
 		if $Sounds/biking.playing:

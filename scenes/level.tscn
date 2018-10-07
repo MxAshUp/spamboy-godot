@@ -108,7 +108,6 @@ position = Vector2( 144, 16 )
 
 [node name="YSort" type="YSort" parent="." index="2"]
 
-editor/display_folded = true
 position = Vector2( 0, 27 )
 sort_enabled = true
 
@@ -117,7 +116,7 @@ sort_enabled = true
 position = Vector2( -64, 5 )
 _sections_unfolded = [ "Z Index" ]
 acceleration = 300
-friction = 300
+friction = 50
 
 [node name="bike" parent="YSort" index="1" instance=ExtResource( 7 )]
 
