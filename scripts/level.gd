@@ -8,6 +8,12 @@ onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
 onready var playerNode = $YSort/player
 onready var carScene = preload("res://scenes/car.tscn")
 
+export (int) var objective_spam_count = 0
+export (float) var objective_seconds = 0 setget set_time_left
+
+var spam_delivered_count = 0
+var time_left = 0
+
 var carsInLevel = []
 
 func _ready():
@@ -15,12 +21,24 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("mailbox"):
 		i.connect("feed", self, "handle_feed")
 
+func set_time_left(n_objective_seconds):
+	objective_seconds = n_objective_seconds
+	time_left = objective_seconds
+
 func _process(delta):
 	updateCarSpawnLocations()
+	process_score(delta)
+
+func process_score(delta):
+	$hud/SpamDeliveredLabed/spamDeliveredValueLabel.text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
+	var sec_left = floor(fmod(time_left, 60))
+	var min_left = floor(time_left / 60)
+	$hud/TimeLeftLabel/timeLeftValueLabel.text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
+	time_left -= delta
 
 # todo - score and such
 func handle_feed():
-	print("score!")
+	spam_delivered_count += 1
 
 func setCameraActive():
 	$"YSort/player/cam".make_current()
@@ -54,7 +72,6 @@ func updateCarSpawnLocations():
 	lanes[0].x = playerNode.position.x
 	lanes[1].x = playerNode.position.x
 	lanes[2].x = playerNode.position.x
-	$hud/debug.set_text(str(lanes[1]))
 
 func _on_player_delta_time(delta):
-	print("Losing time" + str(delta))
+	time_left += delta

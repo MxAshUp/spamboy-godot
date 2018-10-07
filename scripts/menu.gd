@@ -19,6 +19,9 @@ func _on_newgameBtn_button_down():
 		masterNode.remove_child(masterNode.get_node("level"))
 		#Instance level again
 		var thisLevel = level.instance()
+		# todo, set objections based on something else. Hard, easy mode?
+		thisLevel.objective_spam_count = 30
+		thisLevel.objective_seconds = 120
 		$vbox/resumegame.show()
 		masterNode.add_child(thisLevel)
 		masterNode.switchGameState(global.GAME)
