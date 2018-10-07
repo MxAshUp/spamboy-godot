@@ -27,7 +27,6 @@ func can_move_player():
 
 func process_animation_state():
 	var animation_to_play = $player_state_animation.current_animation
-	var move_direction = 0
 	
 	if is_biking:
 		
