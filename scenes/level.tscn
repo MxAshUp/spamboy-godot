@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -270,8 +270,17 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
+[node name="pauseThrottle" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
 [connection signal="delta_time" from="YSort/player" to="." method="_on_player_delta_time"]
 
 [connection signal="timeout" from="hud/gameOverScoreTimer" to="." method="_on_gameOverScoreTimer_timeout"]
+
+[connection signal="timeout" from="pauseThrottle" to="." method="_on_pauseThrottle_timeout"]
 
 

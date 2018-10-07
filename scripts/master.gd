@@ -7,7 +7,7 @@ func _ready():
 	#Initialize prng
 	randomize()
 	
-	switchGameState(global.MAIN)
+	$menu.show()
 
 
 
@@ -18,19 +18,3 @@ func videoSetup():
 	OS.set_window_position(centered_pos)
 	OS.set_window_size(window_size)
 
-
-func switchGameState(to):
-	
-	match to:
-		global.MAIN:
-			get_tree().set_pause(true)
-			$menu.show()
-			$menu.setCameraActive()
-			#$level.hide()
-		global.GAME:
-			get_tree().set_pause(false)
-			$menu.hide()
-			#$level.show()
-			#$level.setCameraActive()
-		_:
-			print("error: undefined change")

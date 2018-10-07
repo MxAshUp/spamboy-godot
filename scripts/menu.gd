@@ -12,12 +12,15 @@ func setCameraActive():
 
 func _on_resumeBtn_button_down():
 	if not creditsActive:
-		masterNode.switchGameState(global.GAME)
 		if active_level != null:
+			hide()
 			active_level.unpause_level()
 
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		_on_resumeBtn_button_down()
+
 func set_active_level(new_active_level):
-	
 	if new_active_level == null:
 		if active_level != null:
 			active_level.queue_free()
@@ -40,16 +43,16 @@ func _on_newgameBtn_button_down():
 		active_level.objective_spam_count = 30
 		active_level.objective_seconds = 5
 		set_active_level(active_level)
-		masterNode.switchGameState(global.GAME)
+		hide()
 
 func level_finished(finished_level, score):
-	masterNode.switchGameState(global.MAIN)
+	show()
 	set_active_level(null)
 
 func level_paused(paused_level):
-	print("PASUED")
-	masterNode.switchGameState(global.MAIN)
+	show()
 	paused_level.hide()
+	setCameraActive()
 
 func _on_creditsBtn_button_down():
 	if not creditsActive:

@@ -25,6 +25,7 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("mailbox"):
 		i.connect("feed", self, "handle_feed")
 	level_active = true
+	get_tree().paused = false
 
 func set_time_left(n_objective_seconds):
 	objective_seconds = n_objective_seconds
@@ -34,15 +35,21 @@ func _process(delta):
 	updateCarSpawnLocations()
 	process_score(delta)
 	
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and $pauseThrottle.time_left == 0:
 		pause_level()
 
+func _on_pauseThrottle_timeout():
+	$pauseThrottle.stop()
+	
 func pause_level():
+	$pauseThrottle.start()
 	get_tree().paused = true
 	emit_signal("paused", self)
 
 func unpause_level():
 	get_tree().paused = false
+	show()
+	setCameraActive()
 
 func process_score(delta):
 	$hud/SpamDeliveredLabed/spamDeliveredValueLabel.text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
@@ -104,3 +111,4 @@ func _on_player_delta_time(delta):
 func _on_gameOverScoreTimer_timeout():
 	$hud/gameOverScoreTimer.stop()
 	emit_signal("game_over", self, final_score)
+
