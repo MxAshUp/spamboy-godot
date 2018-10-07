@@ -98,9 +98,12 @@ func process_sounds():
 		if $Sounds/walking.playing:
 			$Sounds/walking.stop()
 			
-	if is_biking and abs(velocity.x) > 10 and is_trying_to_move():
+	if is_biking and abs(velocity.x) > 0:# and is_trying_to_move():
 		if !$Sounds/biking.playing:
 			$Sounds/biking.play()
+		$Sounds/biking.volume_db = -60 + min(1.0, abs(velocity.x) / max_speed) * 30
+		print($Sounds/biking.volume_db)
+		
 	else:
 		if $Sounds/biking.playing:
 			$Sounds/biking.stop()
