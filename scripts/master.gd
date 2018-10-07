@@ -26,11 +26,11 @@ func switchGameState(to):
 			get_tree().set_pause(true)
 			$menu.show()
 			$menu.setCameraActive()
-			$level.hide()
+			#$level.hide()
 		global.GAME:
 			get_tree().set_pause(false)
 			$menu.hide()
-			$level.show()
-			$level.setCameraActive()
+			#$level.show()
+			#$level.setCameraActive()
 		_:
 			print("error: undefined change")

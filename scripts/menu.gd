@@ -22,9 +22,14 @@ func _on_newgameBtn_button_down():
 		# todo, set objections based on something else. Hard, easy mode?
 		thisLevel.objective_spam_count = 30
 		thisLevel.objective_seconds = 120
+		# TODO - maybe masterNode should listen instead
+		thisLevel.connect("game_over", self, "level_finished")
 		$vbox/resumegame.show()
 		masterNode.add_child(thisLevel)
 		masterNode.switchGameState(global.GAME)
+
+func level_finished():
+	pass
 
 func _on_creditsBtn_button_down():
 	if not creditsActive:

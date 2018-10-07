@@ -8,6 +8,8 @@ onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
 onready var playerNode = $YSort/player
 onready var carScene = preload("res://scenes/car.tscn")
 
+signal game_over
+
 export (int) var objective_spam_count = 0
 export (float) var objective_seconds = 0 setget set_time_left
 
