@@ -140,9 +140,6 @@ func _process(delta):
 		$spamThrottle.start()
 		emit_signal("stuff_mail", self)
 
-	if Input.is_action_just_pressed("ui_cancel"):
-		masterNode.switchGameState(global.MAIN)
-
 	process_animation_state()
 	process_sounds()
 		

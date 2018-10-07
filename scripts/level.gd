@@ -9,19 +9,22 @@ onready var playerNode = $YSort/player
 onready var carScene = preload("res://scenes/car.tscn")
 
 signal game_over
+signal paused
 
 export (int) var objective_spam_count = 0
 export (float) var objective_seconds = 0 setget set_time_left
 
 var spam_delivered_count = 0
 var time_left = 0
-
+var level_active = false
+var final_score = 0
 var carsInLevel = []
 
 func _ready():
 	# Connect all mailbox "feed" signals
 	for i in get_tree().get_nodes_in_group("mailbox"):
 		i.connect("feed", self, "handle_feed")
+	level_active = true
 
 func set_time_left(n_objective_seconds):
 	objective_seconds = n_objective_seconds
@@ -30,13 +33,32 @@ func set_time_left(n_objective_seconds):
 func _process(delta):
 	updateCarSpawnLocations()
 	process_score(delta)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause_level()
+
+func pause_level():
+	get_tree().paused = true
+	emit_signal("paused", self)
+
+func unpause_level():
+	get_tree().paused = false
 
 func process_score(delta):
 	$hud/SpamDeliveredLabed/spamDeliveredValueLabel.text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
 	var sec_left = floor(fmod(time_left, 60))
 	var min_left = floor(time_left / 60)
 	$hud/TimeLeftLabel/timeLeftValueLabel.text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
-	time_left -= delta
+	
+	if level_active:
+		time_left -= delta
+		if time_left <= 0:
+			time_left = 0
+			level_active = false
+			# todo - calculate final score to send up to main
+			final_score = 0
+			$hud/gameOverScoreTimer.start()
+			get_tree().paused = true
 
 # todo - score and such
 func handle_feed():
@@ -77,3 +99,8 @@ func updateCarSpawnLocations():
 
 func _on_player_delta_time(delta):
 	time_left += delta
+
+
+func _on_gameOverScoreTimer_timeout():
+	$hud/gameOverScoreTimer.stop()
+	emit_signal("game_over", self, final_score)

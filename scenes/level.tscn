@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="level" type="Node2D" index="0"]
+[node name="level" type="Node2D"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -31,6 +31,7 @@ objective_seconds = 0
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -89,6 +90,7 @@ __meta__ = {
 
 [node name="door" parent="mapStuff" index="2" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( -88, -6 )
 behindDoor = "ANGRYMEN"
 
@@ -106,6 +108,7 @@ position = Vector2( 144, 16 )
 
 [node name="YSort" type="YSort" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 0, 27 )
 sort_enabled = true
 
@@ -141,11 +144,13 @@ __meta__ = {
 
 [node name="hud" type="CanvasLayer" parent="." index="4"]
 
+pause_mode = 2
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="SpamDeliveredLabed" type="Label" parent="hud" index="0"]
 
@@ -249,6 +254,13 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
+[node name="gameOverScoreTimer" type="Timer" parent="hud" index="2"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 12 )
@@ -259,5 +271,7 @@ mix_target = 0
 bus = "Master"
 
 [connection signal="delta_time" from="YSort/player" to="." method="_on_player_delta_time"]
+
+[connection signal="timeout" from="hud/gameOverScoreTimer" to="." method="_on_gameOverScoreTimer_timeout"]
 
 

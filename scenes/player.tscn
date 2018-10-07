@@ -92,7 +92,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 
 resource_name = "spamming_up"
 length = 0.3
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.9
 loop = true
@@ -129,9 +129,8 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
-resource_name = "walk_lr"
 length = 0.9
 loop = true
 step = 0.15
@@ -148,7 +147,7 @@ tracks/0/keys = {
 "values": [ 15, 16, 17, 18, 19, 20 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.9
 loop = true
@@ -196,6 +195,7 @@ __meta__ = {
 
 [node name="cam" type="Camera2D" parent="." index="1"]
 
+pause_mode = 2
 anchor_mode = 1
 rotating = false
 current = true
@@ -218,7 +218,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Editor", "Limit", "Smoothing", "Transform", "Z Index" ]
+_sections_unfolded = [ "Editor", "Limit", "Pause", "Smoothing", "Transform", "Z Index" ]
 
 [node name="collision_bike" type="CollisionShape2D" parent="." index="2"]
 
@@ -245,10 +245,10 @@ anims/crashing = SubResource( 3 )
 anims/idle_bike_lr = SubResource( 4 )
 anims/idle_lr = SubResource( 5 )
 anims/idle_up = SubResource( 6 )
-anims/spamming_up = SubResource( 10 )
-anims/walk_down = SubResource( 7 )
-anims/walk_lr = SubResource( 8 )
-anims/walk_up = SubResource( 9 )
+anims/spamming_up = SubResource( 7 )
+anims/walk_down = SubResource( 8 )
+anims/walk_lr = SubResource( 9 )
+anims/walk_up = SubResource( 10 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
