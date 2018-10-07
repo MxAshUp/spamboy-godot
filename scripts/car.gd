@@ -25,6 +25,9 @@ func _physics_process(delta):
 	#TODO dummy impl
 	if not carHasToBrake:
 		move_and_slide(Vector2(1,0).normalized()*maxSpeed)
+		$driveAnim.playback_speed = float(maxSpeed/350.0)
+	else:
+		$driveAnim.playback_speed = 0.1
 	
 
 func _on_breakingArea_body_entered(body):

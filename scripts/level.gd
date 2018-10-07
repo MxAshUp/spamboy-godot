@@ -26,6 +26,7 @@ func handle_feed():
 func _input(event): #TODO remove me :>
 	if event.is_action_pressed("ui_accept"):
 		spawnCar()
+		#spawnCar(true) #spawn police
 	if event is InputEventMouseMotion:
 		$hud/debug2.set_text(str(event.position))
 
