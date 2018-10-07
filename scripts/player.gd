@@ -135,7 +135,7 @@ func _process(delta):
 		$collision_bike.disabled = true
 		$collision_char.disabled = false
 	
-	if !is_biking and facing_up and Input.is_action_just_pressed("spam") and !spamming:
+	if !is_biking and facing_up and Input.is_action_just_pressed("spam") and !spamming and max_speed_factor == 1:
 		spamming = true
 		$spamThrottle.start()
 		emit_signal("stuff_mail", self)
