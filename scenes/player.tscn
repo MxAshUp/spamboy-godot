@@ -220,7 +220,7 @@ crashing = false
 position = Vector2( 0, -4 )
 texture = ExtResource( 2 )
 hframes = 30
-frame = 29
+frame = 21
 _sections_unfolded = [ "Animation", "Transform", "Z Index" ]
 __meta__ = {
 "_edit_group_": true

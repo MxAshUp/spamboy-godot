@@ -42,10 +42,15 @@ func process_animation_state():
 
 	if is_biking:
 		
-		if velocity.x:
-			animation_to_play = "cycle_lr"
-		else:
+		if abs(velocity.x) < 5:
 			animation_to_play = "idle_bike_lr"
+		else:
+			if is_trying_to_move():
+				animation_to_play = "bike_lr"
+			elif is_trying_to_stop():
+				animation_to_play = "idle_bike_lr"
+			else:
+				animation_to_play = "bike_coast_lr"
 		
 		if crashing:
 			animation_to_play = "crashing"
@@ -105,8 +110,16 @@ func process_animation_state():
 	elif $player_state_animation.current_animation != "":
 		facing_up = false
 
+func is_trying_to_stop():
+	if is_biking:
+		return (Input.is_action_pressed("ui_left") and velocity.x > 0) or (Input.is_action_pressed("ui_right") and velocity.x < 0)
+	return false
+
 func is_trying_to_move():
-	return Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
+	if is_biking:
+		return (Input.is_action_pressed("ui_left") and velocity.x < 0) or (Input.is_action_pressed("ui_right") and velocity.x > 0)
+	else:
+		return Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
 
 func process_sounds():
 	
