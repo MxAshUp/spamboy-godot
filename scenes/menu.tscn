@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/main.png" type="Texture" id=2]
 [ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/menu/credits.png" type="Texture" id=4]
+[ext_resource path="res://assets/sound/UI_Click.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -17,7 +18,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 default_font = SubResource( 1 )
 
-[node name="menu" type="Control" index="0"]
+[node name="menu" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -295,6 +296,15 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 _sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="clickSound" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = -15.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="button_down" from="vbox/resumegame/resumeBtn" to="." method="_on_resumeBtn_button_down"]
 
