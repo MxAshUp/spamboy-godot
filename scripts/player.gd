@@ -92,7 +92,8 @@ func process_animation_state():
 
 	if animation_to_play != $player_state_animation.current_animation:
 		$player_state_animation.play(animation_to_play)
-		
+	
+	# maybe flip sprite, if supported (ending with _lr)
 	if animation_to_play.ends_with('_lr'):
 		if last_move_dir < 0:
 			$charSprite.flip_h = true
@@ -109,7 +110,6 @@ func is_trying_to_move():
 
 func process_sounds():
 	
-	
 	if !is_biking and is_trying_to_move() and velocity.length() > 20 and max_speed_factor == 1:
 		if !$Sounds/walking.playing:
 			$Sounds/walking.play()
@@ -120,8 +120,8 @@ func process_sounds():
 	if is_biking and abs(velocity.x) > 0:# and is_trying_to_move():
 		if !$Sounds/biking.playing:
 			$Sounds/biking.play()
+		# get louder as get faster
 		$Sounds/biking.volume_db = -60 + min(1.0, abs(velocity.x) / max_speed) * 30
-		print($Sounds/biking.volume_db)
 		
 	else:
 		if $Sounds/biking.playing:
