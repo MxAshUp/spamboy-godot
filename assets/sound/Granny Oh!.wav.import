@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Granny Oh!.wav-c4d6e1d4c6bf61cd80da6dff1fa473cf.sample"
+
+[deps]
+
+source_file="res://assets/sound/Granny Oh!.wav"
+dest_files=[ "res://.import/Granny Oh!.wav-c4d6e1d4c6bf61cd80da6dff1fa473cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

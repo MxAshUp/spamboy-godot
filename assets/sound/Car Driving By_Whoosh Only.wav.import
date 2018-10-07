@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Car Driving By_Whoosh Only.wav-c48d4e54ffaeb3e1485c1bfca6bc8eca.sample"
+
+[deps]
+
+source_file="res://assets/sound/Car Driving By_Whoosh Only.wav"
+dest_files=[ "res://.import/Car Driving By_Whoosh Only.wav-c48d4e54ffaeb3e1485c1bfca6bc8eca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

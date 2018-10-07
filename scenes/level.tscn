@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://scenes/unmounted-bike.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=8]
 [ext_resource path="res://scenes/audioSamples.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=10]
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -18,6 +19,7 @@ script = ExtResource( 1 )
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -107,6 +109,7 @@ position = Vector2( 32, 5 )
 
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
+visible = false
 modulate = Color( 1, 1, 1, 0.187843 )
 texture = ExtResource( 8 )
 _sections_unfolded = [ "Visibility" ]
@@ -123,5 +126,14 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="audioSamples" parent="." index="5" instance=ExtResource( 9 )]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

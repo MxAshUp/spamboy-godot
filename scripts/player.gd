@@ -83,6 +83,24 @@ func process_animation_state():
 	elif $player_state_animation.current_animation != "":
 		facing_up = false
 
+func is_trying_to_move():
+	return Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
+
+func process_sounds():
+	
+	if !is_biking and is_trying_to_move() and velocity.length() > 20:
+		if !$Sounds/walking.playing:
+			$Sounds/walking.play()
+	elif velocity.length() < 20:
+		if $Sounds/walking.playing:
+			$Sounds/walking.stop()
+			
+	if is_biking and abs(velocity.x) > 10 and is_trying_to_move():
+		if !$Sounds/biking.playing:
+			$Sounds/biking.play()
+	else:
+		if $Sounds/biking.playing:
+			$Sounds/biking.stop()
 	
 func _process(delta):
 	if is_biking:
@@ -96,6 +114,7 @@ func _process(delta):
 		emit_signal("stuff_mail", self)
 		
 	process_animation_state()
+	process_sounds()
 		
 func _physics_process(delta):
 	if !crashing and is_biking:
@@ -160,6 +179,7 @@ func process_bike_physics(delta):
 	# Detect if our horizontal speed changed by a lot - then we crash! 
 	if abs((new_velocity - velocity).x) > crash_speed:
 		crashing = true
+		$Sounds/crash.play()
 		velocity = Vector2()
 		
 	velocity = new_velocity

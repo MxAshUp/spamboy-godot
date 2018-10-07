@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Car Driving By.wav-39e7f2a51732b17a352787809ec79e99.sample"
+
+[deps]
+
+source_file="res://assets/sound/Car Driving By.wav"
+dest_files=[ "res://.import/Car Driving By.wav-39e7f2a51732b17a352787809ec79e99.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
