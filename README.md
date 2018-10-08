@@ -1,12 +1,15 @@
 ## About
 You are a delivery boy of junk mail. You are paid to stuff mailboxes with flyers and paper that nobody asked for. Be careful out there, it's a dangerous job!
-## Controls Walking
-* Use arrow keys to walk about
-* Face up press space bar to stuff junk mail
-* Use Control to mount your bike Biking
-* Use left/right arrow keys to accelerate and brake
-* Use up/down arrow keys to steer
-* Press Control to dismount
+## Controls 
+Walking:
+* Use the arrow keys to walk about
+* Face up and press space bar to stuff junk mail
+* Press Ctrl to mount your bike 
+
+Biking:
+* Use the left/right arrow keys to accelerate and brake
+* Use the up/down arrow keys to steer
+* Press Ctrl to dismount
 
 ![](https://img.itch.zone/aW1nLzE1NDU3NDYucG5n/original/i4JYW0.png)
 
