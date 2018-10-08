@@ -69,8 +69,7 @@ func process_score(delta):
 	
 	if level_active:
 		time_left -= delta
-		if time_left <= 0:
-			time_left = 0
+		if time_left <= 0 or spam_delivered_count >= objective_spam_count:
 			level_active = false
 			# todo - calculate final score to send up to main
 			final_score = 0
