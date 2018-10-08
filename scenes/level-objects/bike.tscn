@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/unmounted-bike.gd" type="Script" id=1]
+[ext_resource path="res://scripts/bike.gd" type="Script" id=1]
 [ext_resource path="res://assets/chars/bike.png" type="Texture" id=2]
+
 
 
 
