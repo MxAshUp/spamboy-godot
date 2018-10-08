@@ -3,7 +3,7 @@ extends Node2D
 var open = false
 signal open_door
 
-export(String, "NOTHING", "DOG", "ANGRYMEN") var behindDoor = "NOTHING"
+export(String, "NOTHING", "GRANDMA", "ANGRYMEN") var behindDoor = "NOTHING"
 
 var grumbleAtObject = null
 var grumbling = false
@@ -11,18 +11,27 @@ var grumbling = false
 func _ready():
 	$doorSprite.set_frame(0)
 	$angrymen.hide()
+	$grandma.hide()
 
 func _process(delta):
 	if grumbleAtObject and grumbling:
 		grumbleAtObject.grumbled_at(delta)
+		if grumbleAtObject.position.x < position.x:
+			$angrymen.flip_h = true
+			$grandma.flip_h = true
+		else:
+			$angrymen.flip_h = false
+			$grandma.flip_h = false
 
 #TODO maybe animation
 func openDoor():
 	if not open:
 		match behindDoor:
-			"DOG":
-				pass
-				#spawn chasing doggo
+			"GRANDMA":
+				$grandma.show()
+				$AnimationPlayer.play("grandma")
+				$grumble2.play()
+				grumbling = true
 			"ANGRYMEN":
 				$angrymen.show()
 				$AnimationPlayer.play("angrymen")
@@ -39,6 +48,7 @@ func closeDoor():
 	if open:
 		$doorOpenClose.play()
 		$angrymen.hide()
+		$grandma.hide()
 		open = false
 		$doorSprite.set_frame(0)
 		$grumble.stop()
