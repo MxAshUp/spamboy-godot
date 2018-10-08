@@ -15,6 +15,7 @@ func _ready():
 	$doorSprite.set_frame(0)
 	$Area2D/angrymen.hide()
 	$Area2D/grandma.hide()
+	connect("open_door", self, "openDoor")
 
 func _process(delta):
 	if grumbling:
