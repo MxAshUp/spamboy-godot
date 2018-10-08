@@ -5,8 +5,7 @@ signal full
 
 var scoreScene = preload("res://scenes/scoreText.tscn")
 
-export(String, "SMALL", "MEDIUM", "LARGE") var type = "MEDIUM" setget set_mailbox_type
-var mail_capacity
+export(int) var mail_capacity = 5
 export (int) var mail_count = 0
 var rate_limit_text = 0
 
@@ -48,12 +47,3 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	body.disconnect("stuff_mail",self,"feed") 
-
-func set_mailbox_type(new_type):
-	type = new_type
-	if type == "SMALL":
-		mail_capacity = 5
-	elif type == "MEDIUM":
-		mail_capacity = 10
-	elif type == "LARGE":
-		mail_capacity = 15

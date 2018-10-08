@@ -62,11 +62,11 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="mailbox" type="Node2D"]
+[node name="mailbox" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
-type = "MEDIUM"
+mail_capacity = 5
 mail_count = 0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
