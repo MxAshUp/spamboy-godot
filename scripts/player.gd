@@ -131,16 +131,34 @@ func process_sounds():
 		if $Sounds/walking.playing:
 			$Sounds/walking.stop()
 			
-	if is_biking and abs(velocity.x) > 5 and !is_trying_to_stop():
-		if !$Sounds/biking.playing:
-			$Sounds/biking.play()
-		if is_trying_to_move():
-			# quieter when peddling
-			$Sounds/biking.volume_db = -60
+	if is_biking and abs(velocity.x) > 5:
+		if is_trying_to_stop():
+			if !$Sounds/braking.playing:
+				$Sounds/braking.play()
+		
+			if $Sounds/pedaling.playing:
+				$Sounds/pedaling.stop()
 		else:
-			# coasting	
-			# get louder as get faster
-			$Sounds/biking.volume_db = -70 + min(1.0, abs(velocity.x) / max_speed) * 30
+			if $Sounds/braking.playing:
+				$Sounds/braking.stop()
+				
+			if is_trying_to_move():
+				# quieter when peddling
+				if !$Sounds/pedaling.playing:
+					$Sounds/pedaling.play()
+					
+				if $Sounds/biking.playing:
+					$Sounds/biking.stop()
+			else:
+				if $Sounds/pedaling.playing:
+					$Sounds/pedaling.stop()
+					
+				if !$Sounds/biking.playing:
+					$Sounds/biking.play()
+				# coasting	
+				# get louder as get faster
+				$Sounds/biking.volume_db = -50 + min(1.0, abs(velocity.x) / max_speed) * 30
+
 		
 	else:
 		if $Sounds/biking.playing:
