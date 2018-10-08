@@ -7,6 +7,7 @@ const carSpawnOffset = Vector2(256, 0)
 onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
 onready var playerNode = $YSort/player
 onready var carScene = preload("res://scenes/car.tscn")
+onready var gameOverHud = preload("res://scenes/level-over-hud.tscn")
 
 signal game_over
 signal paused
@@ -64,7 +65,12 @@ func process_score(delta):
 			level_active = false
 			# todo - calculate final score to send up to main
 			final_score = 0
-			$hud/gameOverScoreTimer.start()
+			var goh = gameOverHud.instance()
+			goh.final_score = ("%d" % spam_delivered_count) + " of " +  ("%d" % objective_spam_count)
+			goh.final_time = ("%d" % time_left) + " sec"
+			$hud.queue_free()
+			add_child(goh)
+			goh.connect("done", self, "quit_level")
 			get_tree().paused = true
 
 # todo - score and such
@@ -108,7 +114,6 @@ func _on_player_delta_time(delta):
 	time_left += delta
 
 
-func _on_gameOverScoreTimer_timeout():
-	$hud/gameOverScoreTimer.stop()
+func quit_level():
 	emit_signal("game_over", self, final_score)
 
