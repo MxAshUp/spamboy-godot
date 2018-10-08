@@ -1,19 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/level-objects/unmounted-bike.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=5]
-[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/level-objects/unmounted-bike.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=6]
+[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 16
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -35,19 +36,71 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="basicTileMap" type="TileMap" parent="mapStuff" index="0"]
+
+position = Vector2( 0, -6 )
+z_index = -1
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -196616, 15, 0, -131081, 7, 0, -131078, 7, 0, -131077, 7, 0, -65545, 7, 0, -65544, 7, 0, -65543, 7, 0, -65542, 7, 0, -65541, 7, 0, -65540, 7, 0, -9, 7, 0, -8, 16, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, 65527, 7, 0, 65528, 7, 0, 65529, 7, 0, 65530, 7, 0, 65531, 7, 0, 65532, 7, 0, 131064, 55, 0, 131065, 52, 0, 131066, 53, 0, 131067, 54, 0, 131071, 61, 0 )
+_sections_unfolded = [ "Cell", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="overlaysTileMap" type="TileMap" parent="mapStuff" index="1"]
+
+position = Vector2( 0, -6 )
+z_index = -1
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -196617, 18, 0, -196616, 18, 0, -196615, 18, 0, -196614, 18, 0, -196613, 18, 0, -196612, 18, 0, -262136, 25, 0, -262119, 32, 0, -131081, 19, 0, -131080, 19, 0, -131079, 19, 0, -131078, 22, 0, -131077, 23, 0, -131076, 19, 0, -65545, 20, 0, -65544, 20, 0, -65543, 21, 0, -65540, 24, 0, -131052, 47, 0, -131051, 47, 0, -6, 9, 0, -65493, 9, 0, 65530, 10, 0, 196598, 4, 0, 196605, 3, 0, 196606, 4, 0, 327661, 40, 0, 393206, 41, 0, 327699, 41, 0, 327712, 40, 0 )
+_sections_unfolded = [ "Cell", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="YSort" type="YSort" parent="." index="2"]
 
 position = Vector2( 0, 27 )
 sort_enabled = true
 
-[node name="player" parent="YSort" index="0" instance=ExtResource( 3 )]
+[node name="player" parent="YSort" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -64, -3 )
 _sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 50
 
-[node name="bike" parent="YSort" index="1" instance=ExtResource( 4 )]
+[node name="bike" parent="YSort" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -32, -11 )
 _sections_unfolded = [ "Collision", "Z Index" ]
@@ -56,7 +109,7 @@ _sections_unfolded = [ "Collision", "Z Index" ]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.187843 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -177,7 +230,7 @@ _sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_constants
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
