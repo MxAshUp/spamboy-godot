@@ -1,8 +1,8 @@
 extends Node
 
-enum GAMESTATE_ENUM { MAIN, CREDITS, GAME }
+#TODO get rid of this file
 
-var gameState = MAIN
+var totalScore = 0
 
 func _ready():
 	randomize()

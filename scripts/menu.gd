@@ -3,9 +3,13 @@ extends Control
 const levels = [
 	"res://scenes/levels/level-1.tscn",
 	"res://scenes/levels/level-2.tscn",
-	#"res://scenes/levels/level-3.tscn"
+	"res://scenes/levels/level-3.tscn",
+	"res://scenes/levels/level-4.tscn",
+	"res://scenes/levels/level-5.tscn",
 	# simply add more here
 ]
+
+var scores = []
 
 var current_level = 0
 
@@ -64,11 +68,22 @@ func initial_current_level():
 		hide()
 		
 func level_finished(finished_level, score):
-	show()
+	if scores.size() == 5:
+		$scores/vbox/label1/points.set_text(str(scores[0]))
+		$scores/vbox/label2/points.set_text(str(scores[1]))
+		$scores/vbox/label3/points.set_text(str(scores[2]))
+		$scores/vbox/label4/points.set_text(str(scores[3]))
+		$scores/vbox/label5/points.set_text(str(scores[4]))
+		$scores/vbox/label6/points.set_text(str(scores[0]+scores[1]+scores[2]+scores[3]+scores[4]))
+		$scores.show()
+	
+	self.show()
+	
 	current_level = 0
 	set_active_level(null)
 	
 func next_level(finished_level, score):
+	scores.append(float(int(score * 1000))/1000)
 	current_level += 1
 	if current_level >= levels.size():
 		# game complete!

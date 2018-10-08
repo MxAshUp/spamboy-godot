@@ -1,2 +1,32 @@
-# ReadMe
+SpamBoy Deluxe
+===
 
+# About
+
+You are a delivery boy of junk mail. You are paid to stuff mailboxes with flyers and paper that nobody asked for. Be careful out there, it's a dangerous job!
+Controls
+
+# Walking
+
+Use arrow keys to walk about
+Face up press space bar to stuff junk mail
+Use Control to mount your bike
+
+# Biking
+
+Use left/right arrow keys to accelerate and brake
+Use up/down arrow keys to steer
+Press Control to dismount
+
+Keep an eye up here. You have a time limit to stuff your junk mail quota!
+
+Credit
+
+SpamBoy was made for Open Jam 2018. It has been released under MIT. So you can fork it and make it your own. The repository can be found here: https://github.com/DustinWoods/spamboy-godot.
+
+This game was made in a single weekend by these sleepless junk mail haters:
+
+Mago (Art) @magodevel
+Dustin Woods (Code) @dustinpwoods
+Alex "RocketScienceWins" Zahn (Sound) @__RocketScience
+... and you? Contribute to open source

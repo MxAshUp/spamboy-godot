@@ -90,7 +90,7 @@ tracks/0/keys = {
 "values": [ 21 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=7]
 
 resource_name = "idle_down"
 length = 0.2
@@ -109,7 +109,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.2
 loop = false
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.2
 loop = false
@@ -145,7 +145,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 0.3
 loop = false
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 0.9
 loop = true
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 0.9
 loop = true
@@ -199,7 +199,7 @@ tracks/0/keys = {
 "values": [ 15, 16, 17, 18, 19, 20 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 0.9
 loop = true
@@ -217,13 +217,14 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 acceleration = 1500
 max_speed = 250
 friction = 750
@@ -298,13 +299,13 @@ anims/bike_coast_lr = SubResource( 3 )
 anims/bike_lr = SubResource( 4 )
 anims/crashing = SubResource( 5 )
 anims/idle_bike_lr = SubResource( 6 )
-anims/idle_down = SubResource( 13 )
-anims/idle_lr = SubResource( 7 )
-anims/idle_up = SubResource( 8 )
-anims/spamming_up = SubResource( 9 )
-anims/walk_down = SubResource( 10 )
-anims/walk_lr = SubResource( 11 )
-anims/walk_up = SubResource( 12 )
+anims/idle_down = SubResource( 7 )
+anims/idle_lr = SubResource( 8 )
+anims/idle_up = SubResource( 9 )
+anims/spamming_up = SubResource( 10 )
+anims/walk_down = SubResource( 11 )
+anims/walk_lr = SubResource( 12 )
+anims/walk_up = SubResource( 13 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 

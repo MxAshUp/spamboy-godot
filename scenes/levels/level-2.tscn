@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/level-signal-binder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level-abstract.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level-objects/door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level-objects/mailbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/level-objects/bike.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/levelInstruction.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/level-objects/obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/barrier.png" type="Texture" id=6]
+[ext_resource path="res://scenes/level-objects/bike.tscn" type="PackedScene" id=7]
 
-[node name="level1" type="Node"]
+[node name="level2" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -15,10 +16,11 @@ script = ExtResource( 1 )
 
 objective_spam_count = 21
 objective_seconds = 55.0
-spawning_cars = 0
+spawning_cars = 17
 
 [node name="door" parent="level/mapStuff" index="0" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 56, -6 )
 behindDoor = "GRANDMA"
 
@@ -31,6 +33,7 @@ mail_capacity = 1
 
 [node name="door2" parent="level/mapStuff" index="1" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 568, -6 )
 behindDoor = "ANGRYMEN"
 
@@ -85,6 +88,7 @@ mail_capacity = 1
 
 [node name="door3" parent="level/mapStuff" index="9" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 1704, -6 )
 behindDoor = "GRANDMA"
 
@@ -95,17 +99,27 @@ behindDoor = "GRANDMA"
 position = Vector2( 24, 22 )
 mail_capacity = 1
 
-[node name="YSort" parent="level" index="2"]
+[node name="obstacle" parent="level/mapStuff" index="10" instance=ExtResource( 5 )]
 
-editor/display_folded = true
+position = Vector2( 349.194, 21.1574 )
 
-[node name="bike" parent="level/YSort" index="1" instance=ExtResource( 5 )]
+[node name="obstacle2" parent="level/mapStuff" index="11" instance=ExtResource( 5 )]
+
+position = Vector2( 1393.74, 26.5791 )
+obstacle = ExtResource( 6 )
+
+[node name="bike" parent="level/YSort" index="1" instance=ExtResource( 7 )]
 
 position = Vector2( -32, -11 )
 
-[node name="levelInstruction" parent="level" index="3" instance=ExtResource( 6 )]
+[node name="levelInstruction" parent="level" index="3"]
 
-[node name="boundaries" parent="level" index="8"]
+text = "GO FASTER!
+Deliver 21 in 55 seconds!
+
+Ps. take the bike"
+
+[node name="boundaries" parent="level" index="9"]
 
 visible = false
 

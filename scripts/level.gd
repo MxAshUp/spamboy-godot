@@ -1,7 +1,7 @@
 extends Node2D
 
 const carMaxSpeed = 350 #todo optimize value
-const carMinSpeed = 300  #todo optimize value
+const carMinSpeed = 200  #todo optimize value
 const carSpawnOffset = Vector2(256, 0)
 
 onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
@@ -30,6 +30,12 @@ func _ready():
 	hud = hudCanvas.instance()
 	add_child(hud)
 	
+	#Setup timer
+	if spawning_cars:
+		$carSpawnTimer.set_wait_time(objective_seconds/(spawning_cars + 1))
+		print($carSpawnTimer.wait_time)
+		$carSpawnTimer.start()
+	
 	# Connect all mailbox "feed" signals
 	for i in get_tree().get_nodes_in_group("mailbox"):
 		i.connect("feed", self, "handle_feed")
@@ -39,6 +45,14 @@ func _ready():
 func set_time_left(n_objective_seconds):
 	objective_seconds = n_objective_seconds
 	time_left = objective_seconds
+
+#TODO cheat function
+func _input(event):
+	if event.is_action_pressed("cheat"):
+		spam_delivered_count = objective_spam_count
+	if event.is_action_pressed("spawn"):
+		spawnCar()
+
 
 func _process(delta):
 	updateCarSpawnLocations()
@@ -75,7 +89,9 @@ func process_score(delta):
 		if time_left <= 0 or spam_delivered_count >= objective_spam_count:
 			level_active = false
 			# todo - calculate final score to send up to main
-			final_score = 0
+			final_score = time_left # just submit the remaining times as a score indicator
+			if time_left < 0:
+				time_left = 0
 			var goh = gameOverHud.instance()
 			if spam_delivered_count >= objective_spam_count:
 				goh.failed = false
@@ -115,13 +131,15 @@ func spawnCar(isPoliceCar = false):
 	#	thisCar.position = selectedLane + carSpawnOffset
 	
 	#todo check if there is another car at this position
-	print(thisCar.position)
+	#print(thisCar.position)
 	
 	#Add car to level
 	$YSort.add_child(thisCar)
 	carsInLevel.append(thisCar)
-	
 	#todo max count of cars, remove older cars which are out of players scope
+	
+	#Restart Timer
+	$carSpawnTimer.start()
 
 func updateCarSpawnLocations():
 	if playerNode:

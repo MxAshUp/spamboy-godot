@@ -35,7 +35,8 @@ func _physics_process(delta):
 		if abs(velocity.x) > maxSpeed:
 			velocity.x = maxSpeed * sign(velocity.x)
 	else:
-		velocity.x -= min(500 * delta, abs(velocity.x)) * move_direction
+		velocity.x -= min(1500 * delta, abs(velocity.x)) * move_direction
+		#velocity.x = 0
 	
 	$driveAnim.playback_speed = float(velocity.x/350.0)
 
@@ -44,12 +45,13 @@ func _physics_process(delta):
 func _on_breakingArea_body_entered(body):
 	if body == self:
 		return
-		
+	
+	carHasToBrake = true
 	#Shall the car hit the player?
-	if ignoreBreakAreaOnPlayer and body.get_name() == "player":
-		return
-	else:
-		carHasToBrake = true
+#	if ignoreBreakAreaOnPlayer and body.get_name() == "player":
+#		return
+#	else:
+#		carHasToBrake = true
 
 func _on_breakingArea_body_exited(body):
 	if body == self:
@@ -59,3 +61,10 @@ func _on_breakingArea_body_exited(body):
 		return
 	else:
 		carHasToBrake = false
+
+
+func _on_spawnArea_body_entered(body):
+	if body != self:
+		if body.is_in_group("car"):
+			position.x -= 60
+			#TODO yet another dirty workaround :>

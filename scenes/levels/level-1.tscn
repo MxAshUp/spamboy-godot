@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/level-signal-binder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level-abstract.tscn" type="PackedScene" id=2]
@@ -6,15 +6,10 @@
 [ext_resource path="res://scenes/level-objects/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/level-objects/obstacle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/level/barrier.png" type="Texture" id=6]
-[ext_resource path="res://scenes/levelInstruction.tscn" type="PackedScene" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
+[node name="level1" type="Node"]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 32.8555 )
-
-[node name="level1" type="Node" index="0"]
-
+pause_mode = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
@@ -22,14 +17,14 @@ _sections_unfolded = [ "Pause" ]
 
 _sections_unfolded = [ "Pause" ]
 objective_spam_count = 6
-objective_seconds = 30.0
-spawning_cars = 0
+objective_seconds = 45.0
+spawning_cars = 4
 
 [node name="mailbox" parent="level/mapStuff" index="0" groups=[
 "mailbox",
 ] instance=ExtResource( 3 )]
 
-position = Vector2( 56, 16 )
+position = Vector2( 49, 16 )
 mail_capacity = 2
 
 [node name="door" parent="level/mapStuff" index="1" instance=ExtResource( 4 )]
@@ -71,31 +66,15 @@ tile_data = PoolIntArray( -327675, 17, 0, -327673, 17, 0, -327671, 17, 0, -32766
 
 editor/display_folded = true
 
-[node name="levelInstruction" parent="level" index="3" instance=ExtResource( 7 )]
+[node name="levelInstruction" parent="level" index="3"]
 
 text = "Welcome to the new job!
-Deliver 20 flyers in 25 seconds!
+Deliver 6 flyers in 45 seconds!
 Hurry!"
 
-[node name="boundaries" parent="level" index="8"]
+[node name="boundaries" parent="level" index="9"]
 
 visible = false
-
-[node name="left-side-boundary" type="StaticBody2D" parent="level" index="9"]
-
-position = Vector2( -141, 61 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level/left-side-boundary" index="0"]
-
-position = Vector2( 0, -4 )
-shape = SubResource( 1 )
 
 
 [editable path="level"]

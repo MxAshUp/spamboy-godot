@@ -1,23 +1,45 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/main.png" type="Texture" id=2]
 [ext_resource path="res://assets/menu/logo.png" type="Texture" id=3]
-[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/menu/menu_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/menu/credits.png" type="Texture" id=5]
-[ext_resource path="res://assets/sound/UI_Click.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/mago3.1.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/sound/UI_Click.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Theme" id=2]
 
 default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Theme" id=4]
+
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="menu" type="Control" index="0"]
 
@@ -79,9 +101,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 13.0
+margin_left = 16.0
 margin_top = 54.0
-margin_right = 161.0
+margin_right = 131.0
 margin_bottom = 142.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -106,12 +128,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0.156863, 0.160784, 0.180392, 1 )
+custom_constants/shadow_as_outline = 1
 text = "RESUME"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme" ]
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="resumeBtn" type="TextureButton" parent="vbox/resumegame" index="0"]
 
@@ -138,20 +162,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 148.0
-margin_bottom = 26.0
+margin_right = 115.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0.156863, 0.160784, 0.180392, 1 )
+custom_constants/shadow_as_outline = 1
 text = "NEW GAME"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme" ]
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="newgameBtn" type="TextureButton" parent="vbox/newgame" index="0"]
 
@@ -178,21 +204,23 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 30.0
-margin_right = 148.0
-margin_bottom = 56.0
+margin_top = 17.0
+margin_right = 115.0
+margin_bottom = 30.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0.156863, 0.160784, 0.180392, 1 )
+custom_constants/shadow_as_outline = 1
 text = "CREDITS"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme" ]
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="creditsBtn" type="TextureButton" parent="vbox/credits" index="0"]
 
@@ -219,9 +247,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 13.0
+margin_left = 16.0
 margin_top = 144.0
-margin_right = 161.0
+margin_right = 164.0
 margin_bottom = 170.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -229,12 +257,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0.156863, 0.160784, 0.180392, 1 )
+custom_constants/shadow_as_outline = 1
 text = "QUIT"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme" ]
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="quitBtn" type="TextureButton" parent="quit" index="0"]
 
@@ -242,6 +272,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -257,7 +289,6 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="credits" type="Sprite" parent="." index="5"]
 
-visible = false
 texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset" ]
@@ -305,14 +336,404 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Anchor", "Margin" ]
 
+[node name="RichTextLabel" type="RichTextLabel" parent="credits" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 87.0
+margin_top = 24.0
+margin_right = 280.0
+margin_bottom = 143.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "
+#OpenJam2018 - Spam to Win
+[color=#b55088]<code>[/color]
+Dustin Woods [color=#fa5c5c][url=https://itch.io/profile/altru/]¥[/url][/color]  [color=#1da1f2][url=https://twitter.com/DustinPWoods/]`[/url][/color]
+[color=#b55088]<art>[/color]
+mago [color=#fa5c5c][url=https://magodev.itch.io/]¥[/url][/color]  [color=#1da1f2][url=https://twitter.com/magodevel/]`[/url][/color]
+[color=#b55088]<sound>[/color]
+Alex Zahn [color=#fa5c5c][url=https://itch.io/profile/rocketsciencewins]¥[/url][/color]  [color=#1da1f2][url=https://twitter.com/__RocketScience]`[/url][/color]
+"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "
+#OpenJam2018 - Spam to Win
+<code>
+Dustin Woods ¥  `
+<art>
+mago ¥  `
+<sound>
+Alex Zahn ¥  `
+"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Theme" ]
+
 [node name="clickSound" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 8 )
 volume_db = -15.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="scores" type="Control" parent="." index="7"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 179.0
+margin_top = 41.0
+margin_right = 284.0
+margin_bottom = 148.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="bg" type="ColorRect" parent="scores" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 0.696118 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="vbox" type="VBoxContainer" parent="scores" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 46.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="label1" type="Label" parent="scores/vbox" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 46.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "Level 1"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="label2" type="Label" parent="scores/vbox" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 17.0
+margin_right = 46.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "Level 2"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="label3" type="Label" parent="scores/vbox" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 34.0
+margin_right = 46.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "Level 3"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label3" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="label4" type="Label" parent="scores/vbox" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 51.0
+margin_right = 46.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "Level 4"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label4" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="label5" type="Label" parent="scores/vbox" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 68.0
+margin_right = 46.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "Level 5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label5" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.996078, 0.682353, 0.203922, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="label6" type="Label" parent="scores/vbox" index="5"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 85.0
+margin_right = 46.0
+margin_bottom = 98.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.894118, 0.231373, 0.266667, 1 )
+text = "Overall"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="points" type="Label" parent="scores/vbox/label6" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 98.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.894118, 0.231373, 0.266667, 1 )
+text = "0.0000"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [connection signal="button_down" from="vbox/resumegame/resumeBtn" to="." method="_on_resumeBtn_button_down"]
 

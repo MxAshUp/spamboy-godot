@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/car.gd" type="Script" id=1]
 [ext_resource path="res://assets/level/carShadow.png" type="Texture" id=2]
@@ -21,12 +21,17 @@ default_font = SubResource( 1 )
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 41, 6 )
+extents = Vector2( 41, 5 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30, 6 )
+extents = Vector2( 15.2307, 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 52, 7 )
 
 [sub_resource type="Animation" id=5]
 
@@ -78,7 +83,9 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="car" type="StaticBody2D"]
+[node name="car" type="StaticBody2D" groups=[
+"car",
+]]
 
 input_pickable = false
 collision_layer = 1
@@ -88,12 +95,13 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Collision", "Z Index" ]
 
 [node name="shadow" type="Sprite" parent="." index="0"]
 
-position = Vector2( 0, -20 )
+position = Vector2( 0, -17 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
@@ -129,12 +137,13 @@ _sections_unfolded = [ "Theme" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 1, -6 )
+position = Vector2( 1, -5 )
 shape = SubResource( 3 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="breakingArea" type="Area2D" parent="." index="4"]
 
-position = Vector2( 52, 0 )
+position = Vector2( 52, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -145,11 +154,27 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="breakingArea" index="0"]
 
-position = Vector2( -13, -6 )
+position = Vector2( 9.00002, -6 )
 scale = Vector2( 1.18182, 1 )
 shape = SubResource( 4 )
 
-[node name="driveAnim" type="AnimationPlayer" parent="." index="5"]
+[node name="spawnArea" type="Area2D" parent="." index="5"]
+
+position = Vector2( 0, -2 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawnArea" index="0"]
+
+position = Vector2( 0, -2 )
+shape = SubResource( 7 )
+
+[node name="driveAnim" type="AnimationPlayer" parent="." index="6"]
 
 root_node = NodePath("..")
 autoplay = "idle"
@@ -159,7 +184,7 @@ playback_speed = 1.0
 anims/idle = SubResource( 5 )
 blend_times = [  ]
 
-[node name="policeAnim" type="AnimationPlayer" parent="." index="6"]
+[node name="policeAnim" type="AnimationPlayer" parent="." index="7"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -169,7 +194,7 @@ playback_speed = 1.0
 anims/blueLight = SubResource( 6 )
 blend_times = [  ]
 
-[node name="blueLight" type="Light2D" parent="." index="7"]
+[node name="blueLight" type="Light2D" parent="." index="8"]
 
 position = Vector2( 0, -27 )
 enabled = false
@@ -194,7 +219,7 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 
-[node name="redLight" type="Light2D" parent="." index="8"]
+[node name="redLight" type="Light2D" parent="." index="9"]
 
 position = Vector2( 5, -31 )
 enabled = false
@@ -222,5 +247,7 @@ shadow_item_cull_mask = 1
 [connection signal="body_entered" from="breakingArea" to="." method="_on_breakingArea_body_entered"]
 
 [connection signal="body_exited" from="breakingArea" to="." method="_on_breakingArea_body_exited"]
+
+[connection signal="body_entered" from="spawnArea" to="." method="_on_spawnArea_body_entered"]
 
 

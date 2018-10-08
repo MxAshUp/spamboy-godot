@@ -1,23 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=5]
-[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/sound/Music Background.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/levelInstruction.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=6]
+[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/Music Background.ogg" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 208, 16 )
 
-[node name="level" type="Node2D"]
+[node name="level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
 objective_seconds = 120.0
+spawning_cars = 0
 
 [node name="background" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -87,48 +89,58 @@ sort_enabled = true
 [node name="player" parent="YSort" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( -64, -3 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Collision", "Z Index" ]
 acceleration = 300
 friction = 50
 
-[node name="debugOverlay" type="Sprite" parent="." index="3"]
+[node name="levelInstruction" parent="." index="3" instance=ExtResource( 5 )]
+
+text = "hey mama"
+
+[node name="debugOverlay" type="Sprite" parent="." index="4"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.187843 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="4"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="5"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = -10.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+[node name="music" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -20.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
 
-[node name="pauseThrottle" type="Timer" parent="." index="6"]
+[node name="carSpawnTimer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 50.0
+one_shot = true
+autostart = false
+
+[node name="pauseThrottle" type="Timer" parent="." index="8"]
 
 process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = false
 
-[node name="boundaries" type="StaticBody2D" parent="." index="7"]
+[node name="boundaries" type="StaticBody2D" parent="." index="9"]
 
-editor/display_folded = true
 position = Vector2( -64, 0 )
 input_pickable = false
 collision_layer = 1
@@ -145,10 +157,12 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="boundaries" index="1"]
 
-position = Vector2( -48, 104 )
+position = Vector2( -48, 106 )
 shape = SubResource( 1 )
 
 [connection signal="delta_time" from="YSort/player" to="." method="_on_player_delta_time"]
+
+[connection signal="timeout" from="carSpawnTimer" to="." method="spawnCar"]
 
 [connection signal="timeout" from="pauseThrottle" to="." method="_on_pauseThrottle_timeout"]
 

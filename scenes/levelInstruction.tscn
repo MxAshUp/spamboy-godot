@@ -70,12 +70,14 @@ tracks/0/keys = {
 
 [node name="levelInstruction" type="CanvasLayer"]
 
+pause_mode = 2
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 text = "Hey! Need you to deliver 20 flyers in 25 seconds!
 
 Ps. take the bike"
@@ -121,16 +123,18 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Welcome to the new job!
-Deliver 20 flyers in 25 seconds!
-Hurry!"
+bbcode_text = "GO FASTER!
+Deliver 21 in 55 seconds!
+
+Ps. take the bike"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Welcome to the new job!
-Deliver 20 flyers in 25 seconds!
-Hurry!"
+text = "GO FASTER!
+Deliver 21 in 55 seconds!
+
+Ps. take the bike"
 scroll_active = false
 scroll_following = false
 selection_enabled = false
