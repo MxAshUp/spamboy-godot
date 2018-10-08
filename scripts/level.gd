@@ -8,6 +8,7 @@ onready var lanes = [Vector2(0, 24), Vector2(0, 42), Vector2(0, 61)]
 onready var playerNode = $YSort/player
 onready var carScene = preload("res://scenes/car.tscn")
 onready var gameOverHud = preload("res://scenes/level-over-hud.tscn")
+onready var hudCanvas = preload("res://scenes/hud.tscn")
 
 signal game_over
 signal paused
@@ -20,8 +21,12 @@ var time_left = 0
 var level_active = false
 var final_score = 0
 var carsInLevel = []
+var hud
 
 func _ready():
+	hud = hudCanvas.instance()
+	add_child(hud)
+	
 	# Connect all mailbox "feed" signals
 	for i in get_tree().get_nodes_in_group("mailbox"):
 		i.connect("feed", self, "handle_feed")
@@ -56,10 +61,11 @@ func unpause_level():
 	setCameraActive()
 
 func process_score(delta):
-	$hud/SpamDeliveredLabed/spamDeliveredValueLabel.text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
-	var sec_left = floor(fmod(time_left, 60))
-	var min_left = floor(time_left / 60)
-	$hud/TimeLeftLabel/timeLeftValueLabel.text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
+	if hud != null:
+		hud.get_node("SpamDeliveredLabed/spamDeliveredValueLabel").text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
+		var sec_left = floor(fmod(time_left, 60))
+		var min_left = floor(time_left / 60)
+		hud.get_node("TimeLeftLabel/timeLeftValueLabel").text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
 	
 	if level_active:
 		time_left -= delta
@@ -71,7 +77,9 @@ func process_score(delta):
 			var goh = gameOverHud.instance()
 			goh.final_score = ("%d" % spam_delivered_count) + " of " +  ("%d" % objective_spam_count)
 			goh.final_time = ("%d" % time_left) + " sec"
-			$hud.queue_free()
+			if hud != null:
+				hud.queue_free()
+				hud = null
 			add_child(goh)
 			goh.connect("done", self, "quit_level")
 			get_tree().paused = true
@@ -108,10 +116,10 @@ func spawnCar(isPoliceCar = false):
 	#todo max count of cars, remove older cars which are out of players scope
 
 func updateCarSpawnLocations():
-	#Update X comp depending on players position
-	lanes[0].x = playerNode.position.x
-	lanes[1].x = playerNode.position.x
-	lanes[2].x = playerNode.position.x
+	if playerNode:
+		lanes[0].x = playerNode.position.x
+		lanes[1].x = playerNode.position.x
+		lanes[2].x = playerNode.position.x
 
 func _on_player_delta_time(delta):
 	time_left += delta

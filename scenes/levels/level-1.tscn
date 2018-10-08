@@ -1,15 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/level-signal-binder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level-abstract.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/level-objects/mailbox.tscn" type="PackedScene" id=3]
 
-[node name="level1" type="Node"]
+[node name="level1" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
-objective_seconds = 3.0
+objective_spam_count = 10
+objective_seconds = 30.0
+
+[node name="mailbox" parent="level/mapStuff" index="0" groups=[
+"mailbox",
+] instance=ExtResource( 3 )]
+
+position = Vector2( 24, 16 )
+
+[node name="basicTileMap" parent="level/mapStuff" index="1"]
+
+tile_data = PoolIntArray(  )
+
+[node name="overlaysTileMap" parent="level/mapStuff" index="2"]
+
+tile_data = PoolIntArray( -262136, 25, 0, -262119, 32, 0, -131052, 47, 0, -131051, 47, 0, -65493, 9, 0, 196598, 4, 0, 196605, 3, 0, 196606, 4, 0, 327661, 40, 0, 393206, 41, 0, 327699, 41, 0, 327712, 40, 0 )
+
+[node name="boundaries" parent="level" index="6"]
+
+visible = false
 
 
 [editable path="level"]
