@@ -55,6 +55,7 @@ radius = 20.8
 
 script = ExtResource( 1 )
 behindDoor = "NOTHING"
+chase_speed = 10
 
 [node name="doorSprite" type="Sprite" parent="." index="0"]
 
