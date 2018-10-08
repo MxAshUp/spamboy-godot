@@ -31,10 +31,12 @@ func openDoor():
 				#Door wont open - return
 				return
 		open = true
+		$doorOpenClose.play()
 		$doorSprite.set_frame(1)
 
 func closeDoor():
 	if open:
+		$doorOpenClose.play()
 		$angrymen.hide()
 		open = false
 		$doorSprite.set_frame(0)
@@ -42,6 +44,9 @@ func closeDoor():
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == "player":
+		if grumbling:
+			$doneGrumblingTimer.stop()
+			
 		grumbleAtObject = body
 
 func _on_Area2D_body_exited(body):
