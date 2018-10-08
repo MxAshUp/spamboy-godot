@@ -41,7 +41,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="menu" type="Control" index="0"]
+[node name="menu" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -97,6 +97,7 @@ _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="vbox" type="VBoxContainer" parent="." index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -289,6 +290,7 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="credits" type="Sprite" parent="." index="5"]
 
+visible = false
 texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset" ]
