@@ -24,5 +24,5 @@ You are a delivery boy of junk mail. You are paid to stuff mailboxes with flyer
 SpamBoy was made for Open Jam 2018\. It has been released under MIT. So you can fork it and make it your own. The repository can be found here: [https://github.com/DustinWoods/spamboy-godot](https://github.com/DustinWoods/spamboy-godot). This game was made in a single weekend by these sleepless junk mail haters:
 * [Mago](https://itch.io/profile/magodev) (Art) [@magodevel](https://twitter.com/magodevel)
 * [Dustin Woods](https://itch.io/profile/altru) (Code) [@dustinpwoods](https://twitter.com/__RocketScience)
-* [Alex "RocketScienceWins" Zahn](https://itch.io/profile/rocketsciencewins) (Sound) [@__RocketScience](https://twitter.com/__RocketScience)
+* [Alex "Rocket Science" Zahn](https://itch.io/profile/rocketsciencewins) (Sound) [@__RocketScience](https://twitter.com/__RocketScience)
 * ... and you? [Contribute to open source](https://github.com/DustinWoods/spamboy-godot)
