@@ -6,7 +6,9 @@ You are a delivery boy of junk mail. You are paid to stuff mailboxes with flyer
 * Use Control to mount your bike Biking
 * Use left/right arrow keys to accelerate and brake
 * Use up/down arrow keys to steer
-* Press Control to dismount ![](https://img.itch.zone/aW1nLzE1NDU3NDYucG5n/original/i4JYW0.png)
+* Press Control to dismount
+
+![](https://img.itch.zone/aW1nLzE1NDU3NDYucG5n/original/i4JYW0.png)
 
 <figcaption>Press Control near your bike to mount</figcaption>
 
