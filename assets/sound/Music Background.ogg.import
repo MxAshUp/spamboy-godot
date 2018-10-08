@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Music Background.ogg-f8f256f96ce86f6256328e7d5c96356d.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/Music Background.ogg"
+dest_files=[ "res://.import/Music Background.ogg-f8f256f96ce86f6256328e7d5c96356d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
