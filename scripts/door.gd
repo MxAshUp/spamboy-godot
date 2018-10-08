@@ -1,6 +1,7 @@
 extends Node2D
 
 var open = false
+signal open_door
 
 export(String, "NOTHING", "DOG", "ANGRYMEN") var behindDoor = "NOTHING"
 

@@ -30,7 +30,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 20.8
 
-[node name="door" type="Node2D" index="0"]
+[node name="door" type="Node2D"]
 
 script = ExtResource( 1 )
 behindDoor = "NOTHING"
@@ -103,6 +103,8 @@ wait_time = 3.0
 one_shot = true
 autostart = false
 _sections_unfolded = [ "Pause" ]
+
+[connection signal="open_door" from="." to="." method="openDoor"]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

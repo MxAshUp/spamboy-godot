@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=12]
 
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 16
@@ -27,7 +26,7 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 custom_solver_bias = 0.0
 extents = Vector2( 208, 16 )
 
-[node name="level" type="Node2D" index="0"]
+[node name="level" type="Node2D"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -37,7 +36,6 @@ objective_seconds = 0
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

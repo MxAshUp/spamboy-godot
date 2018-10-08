@@ -28,6 +28,7 @@ func feed(sender):
 		$stuffSoundBad.play()
 		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.8,0.8,0.8))
 		rate_limit_text = 1
+		get_parent().emit_signal("open_door")
 		emit_signal("full")
 
 func spawn_score_text(text, animation = "spawn_a", limit = 0, color = Color(1,1,1)):
