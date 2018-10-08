@@ -46,7 +46,7 @@ func _on_newgameBtn_button_down():
 		active_level = level.instance()
 		# todo, set objections based on something else. Hard, easy mode?
 		active_level.objective_spam_count = 30
-		active_level.objective_seconds = 2
+		active_level.objective_seconds = 120
 		set_active_level(active_level)
 		hide()
 		$clickSound.play()
