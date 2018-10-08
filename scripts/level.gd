@@ -116,4 +116,3 @@ func _on_player_delta_time(delta):
 
 func quit_level():
 	emit_signal("game_over", self, final_score)
-

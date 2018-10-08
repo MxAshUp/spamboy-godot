@@ -31,7 +31,6 @@ objective_seconds = 0
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -90,7 +89,6 @@ __meta__ = {
 
 [node name="door" parent="mapStuff" index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 position = Vector2( -88, -6 )
 behindDoor = "ANGRYMEN"
 
@@ -144,6 +142,7 @@ __meta__ = {
 [node name="hud" type="CanvasLayer" parent="." index="4"]
 
 pause_mode = 2
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -268,6 +267,8 @@ process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = false
+
+[connection signal="full" from="mapStuff/door/mailbox" to="mapStuff/door" method="openDoor"]
 
 [connection signal="delta_time" from="YSort/player" to="." method="_on_player_delta_time"]
 

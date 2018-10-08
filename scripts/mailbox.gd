@@ -1,6 +1,7 @@
 extends Node2D
 
 signal feed
+signal full
 
 var scoreScene = preload("res://scenes/scoreText.tscn")
 
@@ -28,9 +29,7 @@ func feed(sender):
 		$stuffSoundBad.play()
 		spawn_score_text("FULL", "spawn_a", rate_limit_text, Color(0.8,0.8,0.8))
 		rate_limit_text = 1
-		#Open the door
-		if get_parent().has_method("openDoor"):
-			get_parent().openDoor()
+		emit_signal("full")
 
 func spawn_score_text(text, animation = "spawn_a", limit = 0, color = Color(1,1,1)):
 	

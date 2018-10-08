@@ -33,12 +33,22 @@ func openDoor():
 		open = true
 		$doorSprite.set_frame(1)
 
+func closeDoor():
+	if open:
+		$angrymen.hide()
+		open = false
+		$doorSprite.set_frame(0)
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == "player":
 		grumbleAtObject = body
 
-
 func _on_Area2D_body_exited(body):
 	if body.get_name() == "player":
 		grumbleAtObject = null
+		$doneGrumblingTimer.start()
+
+func _on_doneGrumblingTimer_timeout():
+	if grumbling:
+		grumbling = false
+		closeDoor()
