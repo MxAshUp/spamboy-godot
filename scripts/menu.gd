@@ -1,6 +1,13 @@
 extends Control
 
-var level = preload("res://scenes/levels/level-1.tscn")
+const levels = [
+	"res://scenes/levels/level-1.tscn",
+	"res://scenes/levels/level-2.tscn",
+	#"res://scenes/levels/level-3.tscn"
+	# simply add more here
+]
+
+var current_level = 0
 
 onready var masterNode = get_parent()
 
@@ -33,6 +40,8 @@ func set_active_level(new_active_level):
 		$vbox/resumegame.hide()
 	else:
 		new_active_level.connect("game_over", self, "level_finished")
+		new_active_level.connect("next_level", self, "next_level")
+		new_active_level.connect("retry_level", self, "retry_level")
 		new_active_level.connect("paused", self, "level_paused")
 		masterNode.add_child(new_active_level)
 		$vbox/resumegame.show()
@@ -41,18 +50,35 @@ func set_active_level(new_active_level):
 	
 func _on_newgameBtn_button_down():
 	if not creditsActive:
+		initial_current_level()
+		$clickSound.play()
+
+func initial_current_level():
 		# in case there's already a level going, kill it
 		set_active_level(null)
+		var levelObject = load(levels[current_level])
 		#Instance level again
-		active_level = level.instance()
+		active_level = levelObject.instance()
 		# todo, set objections based on something else. Hard, easy mode?
 		set_active_level(active_level)
 		hide()
-		$clickSound.play()
-
+		
 func level_finished(finished_level, score):
 	show()
+	current_level = 0
 	set_active_level(null)
+	
+func next_level(finished_level, score):
+	current_level += 1
+	if current_level >= levels.size():
+		# game complete!
+		# todo - end screen
+		level_finished(finished_level, score)
+	else:
+		initial_current_level()
+	
+func retry_level(finished_level):
+	initial_current_level()
 
 func level_paused(paused_level):
 	show()

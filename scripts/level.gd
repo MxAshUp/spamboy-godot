@@ -11,6 +11,8 @@ onready var gameOverHud = preload("res://scenes/level-over-hud.tscn")
 onready var hudCanvas = preload("res://scenes/hud.tscn")
 
 signal game_over
+signal next_level
+signal retry_level
 signal paused
 
 export (int) var objective_spam_count = 0
@@ -74,6 +76,10 @@ func process_score(delta):
 			# todo - calculate final score to send up to main
 			final_score = 0
 			var goh = gameOverHud.instance()
+			if spam_delivered_count >= objective_spam_count:
+				goh.failed = false
+			else:
+				goh.failed = true
 			goh.final_score = ("%d" % spam_delivered_count) + " of " +  ("%d" % objective_spam_count)
 			goh.final_time = ("%d" % time_left) + " sec"
 			if hud != null:
@@ -81,6 +87,8 @@ func process_score(delta):
 				hud = null
 			add_child(goh)
 			goh.connect("done", self, "quit_level")
+			goh.connect("next", self, "next_level")
+			goh.connect("retry", self, "retry_level")
 			get_tree().paused = true
 
 # todo - score and such
@@ -126,3 +134,10 @@ func _on_player_delta_time(delta):
 
 func quit_level():
 	emit_signal("game_over", self, final_score)
+	
+func next_level():
+	print("1")
+	emit_signal("next_level", self, final_score)
+	
+func retry_level():
+	emit_signal("retry_level", self)

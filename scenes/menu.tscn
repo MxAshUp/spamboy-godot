@@ -18,7 +18,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 default_font = SubResource( 1 )
 
-[node name="menu" type="Control"]
+[node name="menu" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
