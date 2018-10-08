@@ -78,7 +78,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[node name="car" type="StaticBody2D" index="0"]
+[node name="car" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1

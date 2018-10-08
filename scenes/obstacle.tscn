@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 4 )
 
-[node name="obstacle" type="Node2D" index="0"]
+[node name="obstacle" type="Node2D"]
 
 script = ExtResource( 1 )
 obstacle = ExtResource( 2 )
