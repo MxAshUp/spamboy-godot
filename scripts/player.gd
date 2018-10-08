@@ -72,7 +72,7 @@ func process_animation_state():
 		elif animation_to_play == "walk_up":
 			animation_to_play = "idle_up"
 		elif animation_to_play == "walk_down":
-			animation_to_play = "idle_lr"
+			animation_to_play = "idle_down"
 		
 
 		# Handle left/right sprite mirror
