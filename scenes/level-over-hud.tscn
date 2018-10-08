@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/level-over-hud.gd" type="Script" id=1]
 [ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,14 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="levelOver" type="CanvasLayer"]
 
@@ -84,7 +92,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.710938, 1, 0.722229, 1 )
 custom_colors/font_color_shadow = Color( 0.289345, 0.390625, 0.280762, 1 )
 custom_constants/shadow_as_outline = 1
@@ -191,6 +199,7 @@ group = null
 
 [node name="nextButton2" type="Label" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

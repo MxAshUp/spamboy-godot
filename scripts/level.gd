@@ -17,6 +17,7 @@ signal paused
 
 export (int) var objective_spam_count = 0
 export (float) var objective_seconds = 0 setget set_time_left
+export (int) var spawning_cars = 0
 
 var spam_delivered_count = 0
 var time_left = 0
@@ -64,10 +65,10 @@ func unpause_level():
 
 func process_score(delta):
 	if hud != null:
-		hud.get_node("SpamDeliveredLabed/spamDeliveredValueLabel").text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
+		hud.get_node("spam/spamDeliveredValueLabel").text = ("%02d" % spam_delivered_count) + "/" +  ("%02d" % objective_spam_count)
 		var sec_left = floor(fmod(time_left, 60))
 		var min_left = floor(time_left / 60)
-		hud.get_node("TimeLeftLabel/timeLeftValueLabel").text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
+		hud.get_node("time/timeLeftValueLabel").text = ("%02d" % min_left) + ":" + ("%02d" % sec_left)
 	
 	if level_active:
 		time_left -= delta
@@ -81,7 +82,7 @@ func process_score(delta):
 			else:
 				goh.failed = true
 			goh.final_score = ("%d" % spam_delivered_count) + " of " +  ("%d" % objective_spam_count)
-			goh.final_time = ("%d" % time_left) + " sec"
+			goh.final_time = ("%.3f" % time_left) + "s"
 			if hud != null:
 				hud.queue_free()
 				hud = null

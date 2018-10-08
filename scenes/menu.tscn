@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/main.png" type="Texture" id=2]
-[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/menu/credits.png" type="Texture" id=4]
-[ext_resource path="res://assets/sound/UI_Click.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/menu/logo.png" type="Texture" id=3]
+[ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/menu/credits.png" type="Texture" id=5]
+[ext_resource path="res://assets/sound/UI_Click.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 32
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Theme" id=2]
@@ -23,8 +24,8 @@ default_font = SubResource( 1 )
 pause_mode = 2
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -65,7 +66,14 @@ texture = ExtResource( 2 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
-[node name="vbox" type="VBoxContainer" parent="." index="2"]
+[node name="logo" type="Sprite" parent="." index="2"]
+
+position = Vector2( 72.2779, 31.6187 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="vbox" type="VBoxContainer" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -205,7 +213,7 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="quit" type="Label" parent="." index="3"]
+[node name="quit" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -247,10 +255,10 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="credits" type="Sprite" parent="." index="4"]
+[node name="credits" type="Sprite" parent="." index="5"]
 
 visible = false
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset" ]
 
@@ -297,9 +305,9 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Anchor", "Margin" ]
 
-[node name="clickSound" type="AudioStreamPlayer" parent="." index="5"]
+[node name="clickSound" type="AudioStreamPlayer" parent="." index="6"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -15.0
 pitch_scale = 1.0
 autoplay = false

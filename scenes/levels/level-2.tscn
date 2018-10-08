@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/level-signal-binder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level-abstract.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level-objects/door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level-objects/mailbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/level-objects/bike.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/levelInstruction.tscn" type="PackedScene" id=6]
 
 [node name="level1" type="Node"]
 
@@ -14,6 +15,7 @@ script = ExtResource( 1 )
 
 objective_spam_count = 21
 objective_seconds = 55.0
+spawning_cars = 0
 
 [node name="door" parent="level/mapStuff" index="0" instance=ExtResource( 3 )]
 
@@ -93,11 +95,17 @@ behindDoor = "GRANDMA"
 position = Vector2( 24, 22 )
 mail_capacity = 1
 
+[node name="YSort" parent="level" index="2"]
+
+editor/display_folded = true
+
 [node name="bike" parent="level/YSort" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( -32, -11 )
 
-[node name="boundaries" parent="level" index="7"]
+[node name="levelInstruction" parent="level" index="3" instance=ExtResource( 6 )]
+
+[node name="boundaries" parent="level" index="8"]
 
 visible = false
 

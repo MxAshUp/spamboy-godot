@@ -1,19 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/level-signal-binder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level-abstract.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level-objects/mailbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/level-objects/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/level-objects/obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/level/barrier.png" type="Texture" id=6]
+[ext_resource path="res://scenes/levelInstruction.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 32.8555 )
 
 [node name="level1" type="Node" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
 _sections_unfolded = [ "Pause" ]
 objective_spam_count = 6
 objective_seconds = 30.0
+spawning_cars = 0
 
 [node name="mailbox" parent="level/mapStuff" index="0" groups=[
 "mailbox",
@@ -24,6 +34,7 @@ mail_capacity = 2
 
 [node name="door" parent="level/mapStuff" index="1" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 88, -6 )
 behindDoor = "GRANDMA"
 chase_speed = 20.0
@@ -42,17 +53,49 @@ mail_capacity = 2
 position = Vector2( 248, 16 )
 mail_capacity = 2
 
-[node name="basicTileMap" parent="level/mapStuff" index="3"]
+[node name="obstacle" parent="level/mapStuff" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( -142, 25 )
+obstacle = ExtResource( 6 )
+flip = false
+
+[node name="basicTileMap" parent="level/mapStuff" index="4"]
 
 tile_data = PoolIntArray( -393212, 6, 0, -393211, 6, 0, -393210, 6, 0, -393209, 6, 0, -393208, 6, 0, -393207, 6, 0, -393206, 6, 0, -393205, 6, 0, -393204, 6, 0, -393203, 6, 0, -393202, 6, 0, -327676, 6, 0, -327675, 6, 0, -327674, 6, 0, -327673, 6, 0, -327672, 6, 0, -327671, 6, 0, -327670, 6, 0, -327669, 6, 0, -327668, 6, 0, -327667, 6, 0, -327666, 6, 0, -262140, 6, 0, -262139, 6, 0, -262138, 6, 0, -262137, 6, 0, -262136, 6, 0, -262135, 6, 0, -262134, 6, 0, -262133, 6, 0, -262132, 6, 0, -262131, 6, 0, -262130, 6, 0, -196604, 6, 0, -196603, 6, 0, -196602, 6, 0, -196601, 6, 0, -196600, 6, 0, -196599, 6, 0, -196598, 6, 0, -196597, 6, 0, -196596, 6, 0, -196595, 6, 0, -196594, 6, 0, -131068, 6, 0, -131067, 6, 0, -131066, 6, 0, -131065, 6, 0, -131064, 6, 0, -131063, 6, 0, -131062, 6, 0, -131061, 6, 0, -131060, 6, 0, -131059, 6, 0, -131058, 6, 0, -65536, 13, 0, -65535, 11, 0, -65534, 11, 0, -65533, 11, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 0, -65525, 6, 0, -65524, 6, 0, -65523, 6, 0, -65522, 6, 0, -65520, 13, 0, -65519, 11, 0, -65518, 13, 0, -65517, 11, 0, -65516, 11, 0, 0, 12, 0, 1, 12, 0, 2, 12, 0, 3, 12, 0, 4, 6, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 8, 6, 0, 9, 6, 0, 10, 6, 0, 11, 6, 0, 12, 6, 0, 13, 6, 0, 14, 6, 0, 16, 12, 0, 17, 12, 0, 18, 12, 0, 19, 12, 0, 20, 12, 0, 65540, 61, 0, 65541, 53, 0, 65542, 54, 0, 131074, 3, 0, 131075, 4, 0 )
 
-[node name="overlaysTileMap" parent="level/mapStuff" index="4"]
+[node name="overlaysTileMap" parent="level/mapStuff" index="5"]
 
 tile_data = PoolIntArray( -327675, 17, 0, -327673, 17, 0, -327671, 17, 0, -327669, 17, 0, -327667, 17, 0, -196603, 17, 0, -196601, 17, 0, -196599, 17, 0, -196597, 17, 0, -196595, 17, 0, -65531, 9, 0, -65529, 16, 0, -65527, 17, 0, -65525, 17, 0, -65523, 63, 0, -65521, 11, 0, 2, 14, 0, 5, 10, 0, 13, 62, 0, 15, 12, 0, 17, 14, 0, 65548, 52, 0, 65549, 53, 0, 65550, 54, 0, 131076, 3, 0, 327661, 40, 0, 393206, 41, 0, 327699, 41, 0 )
 
-[node name="boundaries" parent="level" index="7"]
+[node name="YSort" parent="level" index="2"]
+
+editor/display_folded = true
+
+[node name="levelInstruction" parent="level" index="3" instance=ExtResource( 7 )]
+
+text = "Welcome to the new job!
+Deliver 20 flyers in 25 seconds!
+Hurry!"
+
+[node name="boundaries" parent="level" index="8"]
 
 visible = false
+
+[node name="left-side-boundary" type="StaticBody2D" parent="level" index="9"]
+
+position = Vector2( -141, 61 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/left-side-boundary" index="0"]
+
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
 
 
 [editable path="level"]
