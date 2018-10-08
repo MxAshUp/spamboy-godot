@@ -13,11 +13,6 @@
 [ext_resource path="res://assets/mago3.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=12]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 16

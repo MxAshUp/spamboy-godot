@@ -1,6 +1,6 @@
 extends Control
 
-var level = preload("res://scenes/level.tscn")
+var level = preload("res://scenes/level-test.tscn")
 
 onready var masterNode = get_parent()
 
