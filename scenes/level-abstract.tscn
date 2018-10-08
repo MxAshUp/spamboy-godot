@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilemaps/level-tilemap.res" type="TileSet" id=3]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/level-objects/unmounted-bike.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=6]
-[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/level/debugOverlay.png" type="Texture" id=5]
+[ext_resource path="res://assets/sound/Neighborhood Street Ambience.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -91,16 +90,11 @@ _sections_unfolded = [ "Z Index" ]
 acceleration = 300
 friction = 50
 
-[node name="bike" parent="YSort" index="1" instance=ExtResource( 5 )]
-
-position = Vector2( -32, -11 )
-_sections_unfolded = [ "Collision", "Z Index" ]
-
 [node name="debugOverlay" type="Sprite" parent="." index="3"]
 
 visible = false
 modulate = Color( 1, 1, 1, 0.187843 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -108,7 +102,7 @@ __meta__ = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
