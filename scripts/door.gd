@@ -38,6 +38,7 @@ func closeDoor():
 		$angrymen.hide()
 		open = false
 		$doorSprite.set_frame(0)
+		$grumble.stop()
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == "player":
