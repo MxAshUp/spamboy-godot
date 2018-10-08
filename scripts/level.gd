@@ -26,6 +26,8 @@ var final_score = 0
 var carsInLevel = []
 var hud
 
+var allowCheat = false
+
 func _ready():
 	hud = hudCanvas.instance()
 	add_child(hud)
@@ -48,10 +50,14 @@ func set_time_left(n_objective_seconds):
 
 #TODO cheat function
 func _input(event):
-	if event.is_action_pressed("cheat"):
-		spam_delivered_count = objective_spam_count
-	if event.is_action_pressed("spawn"):
-		spawnCar()
+	if event.is_action_pressed("cheatsActivate"):
+		allowCheat = true
+
+	if allowCheat:
+		if event.is_action_pressed("cheat"):
+			spam_delivered_count = objective_spam_count
+		if event.is_action_pressed("spawn"):
+			spawnCar()
 
 
 func _process(delta):
