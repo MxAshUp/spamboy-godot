@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/background.tscn" type="PackedScene" id=2]
@@ -21,7 +21,12 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="level" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 208, 16 )
+
+[node name="level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 objective_spam_count = 0
@@ -31,6 +36,7 @@ objective_seconds = 0
 
 [node name="mapStuff" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -106,6 +112,7 @@ position = Vector2( 144, 16 )
 
 [node name="YSort" type="YSort" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 0, 27 )
 sort_enabled = true
 
@@ -267,6 +274,27 @@ process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = false
+
+[node name="boundaries" type="StaticBody2D" parent="." index="7"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries" index="0"]
+
+position = Vector2( -48, 8 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="boundaries" index="1"]
+
+position = Vector2( -48, 104 )
+shape = SubResource( 2 )
 
 [connection signal="full" from="mapStuff/door/mailbox" to="mapStuff/door" method="openDoor"]
 

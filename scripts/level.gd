@@ -36,6 +36,9 @@ func _process(delta):
 	updateCarSpawnLocations()
 	process_score(delta)
 	
+	# infinite up/down boundaries
+	$boundaries.position.x = $YSort/player.position.x
+	
 	if Input.is_action_just_pressed("ui_cancel") and $pauseThrottle.time_left == 0 and level_active:
 		pause_level()
 
