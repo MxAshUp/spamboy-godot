@@ -1,6 +1,6 @@
 extends Control
 
-var level = preload("res://scenes/level-test.tscn")
+var level = preload("res://scenes/levels/level-1.tscn")
 
 onready var masterNode = get_parent()
 
@@ -11,9 +11,10 @@ func setCameraActive():
 	$Camera2D.make_current()
 
 func unpause_active_level():
-	if active_level != null and active_level.level_active:
-		hide()
-		active_level.unpause_level()
+	if active_level != null:
+		if active_level.level_active:
+			hide()
+			active_level.unpause_level()
 
 func _on_resumeBtn_button_down():
 	if not creditsActive:
@@ -45,8 +46,6 @@ func _on_newgameBtn_button_down():
 		#Instance level again
 		active_level = level.instance()
 		# todo, set objections based on something else. Hard, easy mode?
-		active_level.objective_spam_count = 30
-		active_level.objective_seconds = 120
 		set_active_level(active_level)
 		hide()
 		$clickSound.play()
