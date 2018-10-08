@@ -8,35 +8,54 @@ export(String, "NOTHING", "GRANDMA", "ANGRYMEN") var behindDoor = "NOTHING"
 var grumbleAtObject = null
 var grumbling = false
 
+var chasing = false
+
 func _ready():
 	$doorSprite.set_frame(0)
-	$angrymen.hide()
-	$grandma.hide()
+	$Area2D/angrymen.hide()
+	$Area2D/grandma.hide()
 
 func _process(delta):
 	if grumbleAtObject and grumbling:
 		grumbleAtObject.grumbled_at(delta)
-		if grumbleAtObject.position.x < position.x:
-			$angrymen.flip_h = true
-			$grandma.flip_h = true
+		if grumbleAtObject.position.x < ($Area2D.position + position).x:
+			$Area2D/angrymen.flip_h = true
+			$Area2D/grandma.flip_h = true
 		else:
-			$angrymen.flip_h = false
-			$grandma.flip_h = false
+			$Area2D/angrymen.flip_h = false
+			$Area2D/grandma.flip_h = false
+		if chasing:
+			var move_offset = Vector2(0, -24)
+			var move_direction = Vector2()
+			move_direction = grumbleAtObject.position - ($Area2D.position + position + move_offset)
+			print(move_direction.y)
+			if abs(move_direction.y) > 5:
+				move_direction.x = 0
+			
+			if abs(move_direction.y) < 5 or abs($Area2D.position.y) > 64:
+				move_direction.y = 0
+				
+			if abs(move_direction.x) < 5 or abs($Area2D.position.x) > 8:
+				move_direction.x = 0
+				
+			move_direction = move_direction.normalized() * 10
+			$Area2D.position += move_direction * delta
 
 #TODO maybe animation
 func openDoor():
 	if not open:
 		match behindDoor:
 			"GRANDMA":
-				$grandma.show()
+				$Area2D/grandma.show()
 				$AnimationPlayer.play("grandma")
 				$grumble2.play()
 				grumbling = true
 			"ANGRYMEN":
-				$angrymen.show()
+				$Area2D/angrymen.show()
 				$AnimationPlayer.play("angrymen")
 				$grumble.play()
 				grumbling = true
+				chasing = true
 			_:
 				#Door wont open - return
 				return
@@ -47,8 +66,9 @@ func openDoor():
 func closeDoor():
 	if open:
 		$doorOpenClose.play()
-		$angrymen.hide()
-		$grandma.hide()
+		$Area2D/angrymen.hide()
+		$Area2D/grandma.hide()
+		$Area2D.position = Vector2(0,0)
 		open = false
 		$doorSprite.set_frame(0)
 		$grumble.stop()

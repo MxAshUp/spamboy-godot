@@ -2,11 +2,11 @@
 
 [ext_resource path="res://scripts/door.gd" type="Script" id=1]
 [ext_resource path="res://assets/level/door.png" type="Texture" id=2]
-[ext_resource path="res://assets/level/angrymen.png" type="Texture" id=3]
-[ext_resource path="res://assets/level/granny.png" type="Texture" id=4]
-[ext_resource path="res://assets/sound/Angry Grumble.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sound/Granny Scream.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sound/Latch.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/Angry Grumble.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sound/Granny Scream.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/Latch.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/level/angrymen.png" type="Texture" id=6]
+[ext_resource path="res://assets/level/granny.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -15,7 +15,7 @@ length = 0.3
 loop = true
 step = 0.15
 tracks/0/type = "value"
-tracks/0/path = NodePath("angrymen:frame")
+tracks/0/path = NodePath("Area2D/angrymen:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +34,7 @@ length = 0.6
 loop = true
 step = 0.15
 tracks/0/type = "value"
-tracks/0/path = NodePath("grandma:position")
+tracks/0/path = NodePath("Area2D/grandma:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -62,19 +62,7 @@ texture = ExtResource( 2 )
 hframes = 2
 _sections_unfolded = [ "Animation", "Offset" ]
 
-[node name="angrymen" type="Sprite" parent="." index="1"]
-
-position = Vector2( 0, 1 )
-texture = ExtResource( 3 )
-hframes = 2
-_sections_unfolded = [ "Animation" ]
-
-[node name="grandma" type="Sprite" parent="." index="2"]
-
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Animation", "Transform" ]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -85,31 +73,31 @@ anims/angrymen = SubResource( 1 )
 anims/grandma = SubResource( 3 )
 blend_times = [  ]
 
-[node name="grumble" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="grumble" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = -40.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="grumble2" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = ExtResource( 4 )
+volume_db = -40.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="doorOpenClose" type="AudioStreamPlayer2D" parent="." index="4"]
 
 stream = ExtResource( 5 )
-volume_db = -40.0
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-
-[node name="grumble2" type="AudioStreamPlayer2D" parent="." index="5"]
-
-stream = ExtResource( 6 )
-volume_db = -40.0
-pitch_scale = 1.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-
-[node name="doorOpenClose" type="AudioStreamPlayer2D" parent="." index="6"]
-
-stream = ExtResource( 7 )
 volume_db = -30.0
 pitch_scale = 1.0
 autoplay = false
@@ -118,7 +106,7 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="Area2D" type="Area2D" parent="." index="7"]
+[node name="Area2D" type="Area2D" parent="." index="5"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -127,6 +115,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
@@ -134,7 +123,19 @@ position = Vector2( 0, 24 )
 scale = Vector2( 1.73077, 1.26923 )
 shape = SubResource( 2 )
 
-[node name="doneGrumblingTimer" type="Timer" parent="." index="8"]
+[node name="angrymen" type="Sprite" parent="Area2D" index="1"]
+
+position = Vector2( 0, 1 )
+texture = ExtResource( 6 )
+hframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="grandma" type="Sprite" parent="Area2D" index="2"]
+
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="doneGrumblingTimer" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 3.0
