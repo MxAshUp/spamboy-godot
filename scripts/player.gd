@@ -346,12 +346,9 @@ func _on_player_state_animation_animation_finished(anim_name):
 		dismount_bike()
 		
 
-
 func _on_Timer_timeout_reset_max_speed():
-	$Timer.stop()
 	max_speed_factor = 1
 
 
 func _on_spamThrottle_timeout():
-	$spamThrottle.stop()
 	spamming = false

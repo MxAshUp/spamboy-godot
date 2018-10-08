@@ -198,7 +198,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -349,15 +349,15 @@ position = Vector2( 0, -5 )
 [node name="Timer" type="Timer" parent="." index="9"]
 
 process_mode = 1
-wait_time = 1.0
-one_shot = false
+wait_time = 0.1
+one_shot = true
 autostart = false
 
 [node name="spamThrottle" type="Timer" parent="." index="10"]
 
 process_mode = 1
 wait_time = 0.3
-one_shot = false
+one_shot = true
 autostart = false
 
 [connection signal="animation_finished" from="player_state_animation" to="." method="_on_player_state_animation_animation_finished"]
