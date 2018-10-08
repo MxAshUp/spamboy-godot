@@ -1,12 +1,13 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/chars/player.png" type="Texture" id=2]
 [ext_resource path="res://assets/sound/Footsteps.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/sound/Bike Coasting.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sound/Crash Into Trash Can.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sound/Bike Brake.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/Bike Brake_1.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sound/Bike Pedaling.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/Bike Pickup.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -378,6 +379,17 @@ area_mask = 1
 
 stream = ExtResource( 7 )
 volume_db = -30.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="pickupbike" type="AudioStreamPlayer2D" parent="Sounds" index="5"]
+
+stream = ExtResource( 8 )
+volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
 max_distance = 2000.0

@@ -163,6 +163,9 @@ func process_sounds():
 	else:
 		if $Sounds/biking.playing:
 			$Sounds/biking.stop()
+
+		if $Sounds/pedaling.playing:
+			$Sounds/pedaling.stop()
 	
 func _process(delta):
 	if is_biking:
@@ -298,6 +301,7 @@ func process_walk_physics(delta):
 func mount_bike():
 	is_biking = true
 	position = ridable_bike.position
+	$Sounds/pickupbike.play()
 	velocity = Vector2()
 	ridable_bike.hide()
 	

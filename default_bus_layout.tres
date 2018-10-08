@@ -17,5 +17,5 @@ bus/0/bypass_fx = false
 bus/0/volume_db = 2.6
 bus/0/send = ""
 bus/0/effect/0/effect = SubResource( 1 )
-bus/0/effect/0/enabled = true
+bus/0/effect/0/enabled = false
 
