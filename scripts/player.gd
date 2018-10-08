@@ -309,7 +309,28 @@ func grumbled_at(delta):
 	max_speed_factor = 0.2
 	$Timer.start()
 	emit_signal("delta_time", - delta)
-	spawn_text("Sorry!", "spawn_a", 1)
+	
+	var sorry_text = "Okay"
+	match randi()%8:
+		0:
+			sorry_text = "Yes sir"
+		1:
+			sorry_text = "Sorry sir"
+		2:
+			sorry_text = "Okay sir"
+		3:
+			sorry_text = "I see"
+		4:
+			sorry_text = "My bad"
+		5:
+			sorry_text = "Okay"
+		6:
+			sorry_text = "I'm going"
+		7:
+			sorry_text = "Bye"
+			
+	spawn_text(sorry_text, "spawn_a", 1)
+
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	if area.get_name() == "bike":
