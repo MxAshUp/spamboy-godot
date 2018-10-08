@@ -313,11 +313,11 @@ func grumbled_at(delta):
 	var sorry_text = "Okay"
 	match randi()%8:
 		0:
-			sorry_text = "Yes sir"
+			sorry_text = "Oh..."
 		1:
-			sorry_text = "Sorry sir"
+			sorry_text = "Sorry"
 		2:
-			sorry_text = "Okay sir"
+			sorry_text = "I didn't..."
 		3:
 			sorry_text = "I see"
 		4:
